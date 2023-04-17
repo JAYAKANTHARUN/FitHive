@@ -1,3 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+
+.navbar{
+  background-color: rgb(226, 206, 182);
+  margin-top: 0px;
+
+}
+.navbar li{
+  display: inline-block;
+  padding: 15px;
+  margin:10px;
+  align-items: end; 
+  cursor: pointer;
+  font-size: 20px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bolder;
+  transition: background-color 0.5s ease;
+  border-radius: 30px;
+  border: 2px solid transparent;
+}
+.navbar li:hover{
+  background-color: rgb(234, 200, 158);
+  border: 2px solid rgb(206, 147, 79);
+}
+.navbar li a{
+  color: rgb(165, 108, 42);
+  text-decoration: none;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(226, 206, 182);
+  padding: 10px;
+  color: rgb(165, 108, 42);
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  font-size: 12px;
+}
+
+
+
+
+
+
+/* 
+
 .App {
   text-align: center;
 }
@@ -35,4 +85,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
