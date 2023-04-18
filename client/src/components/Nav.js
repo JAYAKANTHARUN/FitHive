@@ -11,6 +11,7 @@ const Nav=()=>{
                 <li><Link to='/update'>Update Products</Link></li>
                 <li><Link to='/delete'>Delete Products</Link></li>
                 <li><Link to='/profile'>Profile</Link></li>
+                <li className='navsignup'><Link to='/signup'>SignUp</Link></li>
             </ul>
         </div>
     )
