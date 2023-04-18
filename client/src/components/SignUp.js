@@ -1,27 +1,30 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
     const [name, setname] = useState('')
     const [email, setemail] = useState('')
     const [password, setpassword] = useState('')
-    // const [error, seterror] = useState('')
+    const navigate=useNavigate()
 
-    const signup = () => {
+    const signup = async() => {
         console.log(name, email, password)
-        let value = document.getElementById('email').value
-        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(value)) {
-            // seterror('Email must contain "@" symbol')
-            return false;
-        }
-        else {
-            // seterror('')
-            return true;
+        let result=await fetch('http://127.0.0.1:3000/register',{
+            method:'post',
+            body:JSON.stringify({name,email,password}),
+            headers:{
+                'Content-Type':'application/json'
+            }
+        })
+        result=await result.json()
+        console.log(result)
+        if (result){
+            navigate('/products')
         }
     }
 
     return (
-        <form className='signup'>
+        <div className='signup'>
             <h1>Sign Up</h1>
             <label>Name</label><br />
             <input type="text" id='name' placeholder='Enter Your Name' value={name} onChange={(e) => { setname(e.target.value) }} /><br /><br />
@@ -30,7 +33,7 @@ const SignUp = () => {
             <label>Password</label><br />
             <input type="password" id='password' placeholder='Enter Password' value={password} onChange={(e) => { setpassword(e.target.value) }} /><br /><br />
             <button type='submit' onClick={signup}>Submit</button>
-        </form>
+        </div>
     )
 }
 
