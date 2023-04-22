@@ -155,6 +155,38 @@
   transform: scale(1.1);
 }
 
+.products{
+  text-align: center;
+}
+.products h1{
+  font-size: 30px;
+  color: rgb(159, 75, 15);
+  font-weight: bolder;
+  font-family: 'Raleway', sans-serif;
+  margin-bottom: 20px;
+}
+table {
+  margin: auto;
+  border-collapse: collapse;
+  width: 1200px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+}
+th {
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 20px;
+}
+td{
+  text-align: center;
+  padding: 10px;
+  font-weight: 300;
+  font-size: 17px;
+}
+tbody tr:hover {
+  background-color: #fbf4e8;
+}
 
 
 

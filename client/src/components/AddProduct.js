@@ -36,7 +36,7 @@ const AddProduct=()=>{
         <div className="addproduct">
             <h1>Add Product</h1>
             <label>Name : </label>
-            <input type="text" id='name' placeholder='Enter Your Name' value={name} onChange={(e) => { setname(e.target.value) }} /><br />
+            <input type="text" id='name' placeholder='Enter Name' value={name} onChange={(e) => { setname(e.target.value) }} /><br />
             <label>Price : </label>
             <input type="text" id='price' placeholder='Enter Price' value={price} onChange={(e) => { setprice(e.target.value) }} /><br />
             <label>Category : </label>
