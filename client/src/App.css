@@ -99,6 +99,63 @@
 }
 
 
+.addproduct{
+  margin: 0px;
+  text-align: center;
+  width: 100%;
+  justify-content: center;
+}
+.addproduct h1{
+  font-size: 30px;
+  color: rgb(159, 75, 15);
+  font-weight: bolder;
+  font-family: 'Raleway', sans-serif;
+  margin-bottom: 20px;
+}
+.addproduct label{
+  font-size: 20px;
+  font-family: 'Raleway', sans-serif;
+  color: rgb(170, 113, 62);
+  font-weight: bold;
+}
+.addproduct input{
+  margin: 2px;
+  width: 400px;
+  height: 30px;
+  font-size: 20px;
+  text-align: center;
+  color: rgb(126, 56, 25);
+  border: 2px solid rgb(231, 161, 103);
+  border-radius: 20px;
+  transition: all 0.5s ease;
+}
+.addproduct input:hover{
+  background-color: rgb(244, 236, 229);
+}
+.addproduct input:focus{
+  outline: none;
+  border: 2px solid rgb(231, 161, 103);
+  transform: scale(1.05);
+}
+.addproduct input::placeholder{
+  color: rgb(175, 162, 149);
+}
+.addproduct button{
+  font-size: 20px;
+  color: rgb(118, 79, 36);
+  background-color: rgb(241, 238, 235);
+  border: 2px solid rgb(153, 62, 10);
+  border-radius: 20px;
+  margin-top: 20px;
+  padding: 10px;
+  transition: all 0.5s ease;
+}
+.addproduct button:hover{
+  background-color: rgb(225, 210, 194);
+  transform: scale(1.1);
+}
+
+
 
 
 

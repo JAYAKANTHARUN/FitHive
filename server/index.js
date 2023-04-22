@@ -4,6 +4,7 @@ const cors = require('cors')
 
 require('./db/config')
 const User = require('./db/User')
+const Product=require('./db/Product')
 
 app.use(express.json())
 app.use(cors())
@@ -33,6 +34,17 @@ app.post('/login', async (req, res) => {
     }
     else {
         res.send({ result: "no user found" })
+    }
+})
+
+app.post('/add',async(req,res)=>{
+    if (req.body.name && req.body.price && req.body.category && req.body.company) {
+        let product = new Product(req.body)
+        let result = await product.save()
+        res.send(result)
+    }
+    else{
+        res.send({ result: "no product found" })
     }
 })
 
