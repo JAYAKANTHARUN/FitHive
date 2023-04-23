@@ -1,7 +1,10 @@
 import React, { useState } from "react"
 import { useEffect } from 'react'
+import { useNavigate } from "react-router-dom"
 
 const Products = () => {
+
+    const navigate=useNavigate()
 
     const [products, setproducts] = useState([])
 
@@ -28,9 +31,18 @@ const Products = () => {
         }
     }
 
+    const updateproduct=(id)=>{
+        navigate(`/update/${id}`)
+    }
+    const addproduct=()=>{
+        navigate('/add')
+    }
+
     return (
         <div className="products">
             <h1>Products List</h1>
+            <button className="addbutton" onClick={()=>addproduct()}>Add Product</button>
+            <br /><br />
             <table>
                 <thead>
                     <tr>
@@ -52,7 +64,7 @@ const Products = () => {
                                 <td>{item.price}</td>
                                 <td>{item.category}</td>
                                 <td>{item.company}</td>
-                                <td><button onClick={() => deleteproduct(item._id)}>Delete</button></td>
+                                <td><button onClick={() => deleteproduct(item._id)}>Delete</button><button onClick={()=>updateproduct(item._id)}>Update</button></td>
                             </tr>
                         )
                     }

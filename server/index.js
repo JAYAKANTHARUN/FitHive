@@ -63,4 +63,38 @@ app.delete('/product/:id',async(req,res)=>{
     res.send(result)
 })
 
+app.get('/product/:id',async(req,res)=>{
+    let result = await Product.findOne({_id:req.params.id})
+    if (result){
+        res.send(result)
+    }
+    else{
+        res.send({result:"no product found"})
+    }
+})
+app.post('/product/:id',async(req,res)=>{
+    if (req.body.name && req.body.price && req.body.category && req.body.company){
+        let result= await Product.updateOne(
+            { _id:req.params.id },
+            {
+                $set:{
+                    name:req.body.name,
+                    price:req.body.price,
+                    category:req.body.category,
+                    company:req.body.company,
+                }
+            }
+        )
+        if (result){
+            res.send(result)
+        }
+        else{
+            res.send({result:"no updation"})
+        }
+    }
+    else{
+        res.send({result:"no updation"})
+    }
+})
+
 app.listen(3000);  

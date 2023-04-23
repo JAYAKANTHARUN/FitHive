@@ -22,9 +22,8 @@ const AddProduct=()=>{
             }
         })
         result=await result.json()
-        console.log(result)
-        if (result.name && result.price && result.category && result.company){
-            localStorage.setItem('product',JSON.stringify(result))
+        // console.log(result)
+        if (result.modifiedCount===1){
             navigate('/products')
         }
         else{
