@@ -232,6 +232,22 @@ tbody tr:hover {
   color: rgb(175, 162, 149); 
 }   
 
+.profile{
+  text-align: center;
+}
+.profile h1{
+  font-size: 30px;
+  color: rgb(159, 75, 15);
+  font-weight: bolder;
+  font-family: 'Raleway', sans-serif;
+}
+.profile label{
+  font-size: 25px;
+  font-family: 'Raleway', sans-serif;
+  color: rgb(170, 113, 62);
+  font-weight:500 ;
+}
+
 /* 
 
 .App {
