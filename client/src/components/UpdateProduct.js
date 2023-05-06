@@ -15,7 +15,11 @@ const UpdateProduct=()=>{
     },[])
 
     const getproductdetails=async()=>{
-        let result= await fetch(`http://127.0.0.1:3000/product/${params.id}`)
+        let result= await fetch(`http://127.0.0.1:3000/product/${params.id}`,{
+            headers:{
+                authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}`
+            }
+        })
         result = await result.json()
         setname(result.name)
         setprice(result.price)
@@ -29,7 +33,8 @@ const UpdateProduct=()=>{
             method:'post',
             body:JSON.stringify({userid:params.id,name,price,category,company}),
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}`
             }
         })
         result=await result.json()

@@ -13,7 +13,11 @@ const Products = () => {
     }, [])
 
     const getproducts = async () => {
-        let result = await fetch('http://127.0.0.1:3000/products')
+        let result = await fetch('http://127.0.0.1:3000/products',{
+            headers:{
+                authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}`
+            }
+        })
         result = await result.json()
         setproducts(result)
     }
@@ -22,7 +26,10 @@ const Products = () => {
     const deleteproduct = async (id) => {
         if (window.confirm("Are You Sure?")) {
             let result = await fetch(`http://localhost:3000/product/${id}`, {
-                method: 'delete'
+                method: 'delete',
+                headers:{
+                    authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}`
+                }
             })
             result = await result.json()
             if (result) {
@@ -40,7 +47,11 @@ const Products = () => {
     const searchproduct = async (event) => {
         let key = event.target.value
         if (key) {
-            let result = await fetch(`http://127.0.0.1:3000/search/${key}`)
+            let result = await fetch(`http://127.0.0.1:3000/search/${key}`,{
+                headers:{
+                    authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}`
+                }
+            })
             result = await result.json()
             if (result) {
                 setproducts(result)

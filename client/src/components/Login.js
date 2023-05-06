@@ -27,8 +27,9 @@ const Login=()=>{
         })
         result=await result.json()
         console.log(result)
-        if (result.name && result.name){
-            localStorage.setItem("user",JSON.stringify(result))
+        if (result.user.name && result.user.email && result.auth){
+            localStorage.setItem("user",JSON.stringify(result.user))
+            localStorage.setItem("token",JSON.stringify(result.auth))
             navigate('/products')
         }
         else{
