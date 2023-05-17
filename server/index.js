@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors')
 
 const jwt=require('jsonwebtoken')
-const jwtkey='key'
+const jwtkey='e-comm'
 
 require('./db/config')
 const User = require('./db/User')
@@ -67,7 +67,7 @@ app.get('/products',verifytoken,async(req,res)=>{
         res.send(products)
     }
     else{
-        res.send({ products:"No products found" })
+        res.send({ products:"No products found",length:0 })
     }
 })
 
@@ -130,10 +130,10 @@ app.get('/search/:key',verifytoken,async(req,res)=>{
 function verifytoken(req,res,next){
     const token=req.headers['authorization']
     if (token){
-        token=token.split(' ')[1]        //token=token.split(' ')[1]
+        // token=token.split(' ')[1]     //token=token.split(' ')[1]
         jwt.verify(token,jwtkey,(err,valid)=>{
             if (err){
-                res.status(401).send({result:'please add token with header'})
+                res.status(401).send({result:'please provide correct token with header'})
             }
             else{
                 next()

@@ -19,12 +19,11 @@ const AddProduct=()=>{
             body:JSON.stringify({userid,name,price,category,company}),
             headers:{
                 'Content-Type':'application/json',
-                authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}`
+                'authorization':JSON.parse(localStorage.getItem('token'))
             }
         })
         result=await result.json()
-        // console.log(result)
-        if (result.modifiedCount===1){
+        if (result.name && result.price && result.category && result.company){
             navigate('/products')
         }
         else{

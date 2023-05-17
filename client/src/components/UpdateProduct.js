@@ -17,7 +17,7 @@ const UpdateProduct=()=>{
     const getproductdetails=async()=>{
         let result= await fetch(`http://127.0.0.1:3000/product/${params.id}`,{
             headers:{
-                authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}`
+                'authorization':JSON.parse(localStorage.getItem('token'))
             }
         })
         result = await result.json()
@@ -34,7 +34,7 @@ const UpdateProduct=()=>{
             body:JSON.stringify({userid:params.id,name,price,category,company}),
             headers:{
                 "Content-Type":"application/json",
-                authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}`
+                'authorization':JSON.parse(localStorage.getItem('token'))
             }
         })
         result=await result.json()
