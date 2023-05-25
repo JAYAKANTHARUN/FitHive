@@ -68,7 +68,7 @@ const Products = () => {
     return (
         <div className="products">
             <h1>Products List</h1>
-            <button className="addbutton" onClick={() => addproduct()}>Add Product</button>
+            <button onClick={() => addproduct()}>Add Product</button>
             <br /><br />
             <input className="searchbar" onChange={searchproduct} type="text" placeholder="Search Here" />
             <br /><br />

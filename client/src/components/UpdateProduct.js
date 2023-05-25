@@ -38,7 +38,7 @@ const UpdateProduct=()=>{
             }
         })
         result=await result.json()
-        console.log(result)
+        //console.log(result)
         if (result.matchedCount){
             navigate('/products')
         }
