@@ -17,8 +17,8 @@ const AdminLogin=()=>{
             }
         })
         result=await result.json()
-        console.log(result)
-        if (result.admin.username && result.admin.password && result.auth){
+        //console.log(result)
+        if (result.admin.username && result.auth){
             localStorage.setItem("admin",JSON.stringify(result.admin))
             localStorage.setItem("token",JSON.stringify(result.auth))
             navigate('/admin')

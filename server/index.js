@@ -59,7 +59,7 @@ app.post('/login', async (req, res) => {
 app.post('/adminlogin',async(req,res)=>{
     if (req.body.username && req.body.password){
         let admin=await Admin.findOne(req.body).select("-password")
-        console.log(req.body,admin)
+        //console.log(req.body,admin)
         if (admin){
             jwt.sign({ admin }, jwtkey, { expiresIn: "2h" }, (err, token) => {
                 if (err) {

@@ -11,7 +11,6 @@ import UpdateProduct from './components/UpdateProduct'
 import Profile from './components/Profile'
 import AdminLogin from './components/AdminLogin'
 import AdminPrivate from './components/AdminPrivate'
-import Admin from './components/Admin'
 
 function App() {
   return (
@@ -21,7 +20,7 @@ function App() {
         <Routes>
           <Route path='/' element={<h1>FitHive</h1>} />
           <Route element={<AdminPrivate />}>
-            <Route path='/admin' element={<Admin />} />
+            <Route path='/admin' element={<Products />} />
           </Route>
           <Route element={<Private />} >
             <Route path='/products' element={<Products />} />
