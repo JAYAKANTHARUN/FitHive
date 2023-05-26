@@ -8,6 +8,7 @@ const jwtkey = 'e-comm'
 require('./db/config')
 const User = require('./db/User')
 const Product = require('./db/Product')
+const Admin = require('./db/Admin')
 
 app.use(express.json())
 app.use(cors())
@@ -53,6 +54,26 @@ app.post('/login', async (req, res) => {
     }
     else {
         res.send({ user: "no user found" })
+    }
+})
+app.post('/adminlogin',async(req,res)=>{
+    if (req.body.username && req.body.password){
+        let admin=await Admin.findOne(req.body).select("-password")
+        console.log(req.body,admin)
+        if (admin){
+            jwt.sign({ admin }, jwtkey, { expiresIn: "2h" }, (err, token) => {
+                if (err) {
+                    res.send({ admin: "Something went wrong" })
+                }
+                res.send({ admin, auth: token })
+            })
+        }   
+        else {
+            res.send({ admin: "no admin found" })
+        }
+    }
+    else {
+        res.send({ admin: "no details found" })
     }
 })
 
@@ -132,7 +153,7 @@ app.get('/search/:key', verifytoken, async (req, res) => {
         res.send({ result: "product not found" })
     }
 })
-app.post('/profile', async (req, res) => {
+app.post('/profile',verifytoken, async (req, res) => {
     if (req.body.currentpassword && req.body.newpassword) {
         let result = await User.findOne({ _id: req.body.userid })
         if (result.password === req.body.currentpassword) {

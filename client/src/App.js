@@ -1,6 +1,6 @@
 import './App.css';
 import Nav from './components/Nav'
-import { BrowserRouter,Routes,Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Footer from './components/Footer'
 import SignUp from './components/SignUp'
 import Private from './components/Private'
@@ -9,30 +9,34 @@ import AddProduct from './components/AddProduct'
 import Products from './components/Products'
 import UpdateProduct from './components/UpdateProduct'
 import Profile from './components/Profile'
+import AdminLogin from './components/AdminLogin'
+import AdminPrivate from './components/AdminPrivate'
+import Admin from './components/Admin'
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Nav />
-      <Routes>
+        <Nav />
+        <Routes>
+          <Route path='/' element={<h1>FitHive</h1>} />
+          <Route element={<AdminPrivate />}>
+            <Route path='/admin' element={<Admin />} />
+          </Route>
+          <Route element={<Private />} >
+            <Route path='/products' element={<Products />} />
+            <Route path='/add' element={<AddProduct />} />
+            <Route path='/update/:id' element={<UpdateProduct />} />
+            {/* <Route path='/delete' element={ <h1>Delete Products</h1> }/> */}
+            <Route path='/profile' element={<Profile />} />
+          </Route>
+          <Route path='/signup' element={<SignUp />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/adminlogin' element={<AdminLogin />} />
 
-        <Route path='/' element={ <h1>FitHive</h1> }/>
-        
-        <Route element={ <Private /> } >
-        <Route path='/products' element={ <Products /> }/>
-        <Route path='/add' element={ <AddProduct /> }/>
-        <Route path='/update/:id' element={ <UpdateProduct /> }/>
-        {/* <Route path='/delete' element={ <h1>Delete Products</h1> }/> */}
-        <Route path='/profile' element={ <Profile /> }/> 
-        </Route>
-        <Route path='/signup' element={ <SignUp /> }/>
-        <Route path='/login' element={ <Login /> }/>
-
-        
-      </Routes>
+        </Routes>
       </BrowserRouter>
-      <Footer />  
+      <Footer />
     </div>
   );
 }
