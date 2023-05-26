@@ -6,11 +6,12 @@ import SignUp from './components/SignUp'
 import Private from './components/Private'
 import Login from './components/Login'
 import AddProduct from './components/AddProduct'
-import Products from './components/Products'
+import ProductsList from './components/ProductsList'
 import UpdateProduct from './components/UpdateProduct'
 import Profile from './components/Profile'
 import AdminLogin from './components/AdminLogin'
 import AdminPrivate from './components/AdminPrivate'
+import UserProducts from './components/UserProducts';
 
 function App() {
   return (
@@ -20,15 +21,14 @@ function App() {
         <Routes>
           <Route path='/' element={<h1>FitHive</h1>} />
           <Route element={<AdminPrivate />}>
-            <Route path='/admin' element={<Products />} />
-          </Route>
-          <Route element={<Private />} >
-            <Route path='/products' element={<Products />} />
+            <Route path='/admin' element={<ProductsList />} />
             <Route path='/add' element={<AddProduct />} />
             <Route path='/update/:id' element={<UpdateProduct />} />
-            {/* <Route path='/delete' element={ <h1>Delete Products</h1> }/> */}
+          </Route>
+          <Route element={<Private />}>
             <Route path='/profile' element={<Profile />} />
           </Route>
+          <Route path='/userproducts' element={<UserProducts />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/login' element={<Login />} />
           <Route path='/adminlogin' element={<AdminLogin />} />

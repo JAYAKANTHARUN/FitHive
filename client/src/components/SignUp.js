@@ -28,7 +28,7 @@ const SignUp = () => {
         if (result.result.name && result.result.email && result.auth){
             localStorage.setItem("user",JSON.stringify(result.result))
             localStorage.setItem("token",JSON.stringify(result.auth))
-            navigate('/products')
+            navigate('/userproducts')
         }
         else if (result.result==='account present'){
             alert("Account already present")

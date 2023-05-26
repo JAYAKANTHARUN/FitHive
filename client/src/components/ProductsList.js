@@ -13,7 +13,7 @@ const Products = () => {
     }, [])
 
     const getproducts = async () => {
-        let result = await fetch('http://127.0.0.1:3000/products', {
+        let result = await fetch('http://127.0.0.1:3000/admin', {
             headers: {
                 'authorization': JSON.parse(localStorage.getItem('token'))
             }
@@ -27,7 +27,7 @@ const Products = () => {
 
     const deleteproduct = async (id) => {
         if (window.confirm("Are You Sure?")) {
-            let result = await fetch(`http://localhost:3000/product/${id}`, {
+            let result = await fetch(`http://localhost:3000/admin/${id}`, {
                 method: 'delete',
                 headers: {
                     'authorization': JSON.parse(localStorage.getItem('token'))

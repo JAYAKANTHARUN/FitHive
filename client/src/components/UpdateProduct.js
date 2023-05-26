@@ -15,7 +15,7 @@ const UpdateProduct=()=>{
     },[])
 
     const getproductdetails=async()=>{
-        let result= await fetch(`http://127.0.0.1:3000/product/${params.id}`,{
+        let result= await fetch(`http://127.0.0.1:3000/admin/${params.id}`,{
             headers:{
                 'authorization':JSON.parse(localStorage.getItem('token'))
             }
@@ -29,9 +29,9 @@ const UpdateProduct=()=>{
 
     const updateproduct=async ()=>{
         console.log(name,price,category,company)
-        let result = await fetch(`http://127.0.0.1:3000/product/${params.id}`,{
+        let result = await fetch(`http://127.0.0.1:3000/admin/${params.id}`,{
             method:'post',
-            body:JSON.stringify({userid:params.id,name,price,category,company}),
+            body:JSON.stringify({id:params.id,name,price,category,company}),
             headers:{
                 "Content-Type":"application/json",
                 'authorization':JSON.parse(localStorage.getItem('token'))
@@ -40,7 +40,7 @@ const UpdateProduct=()=>{
         result=await result.json()
         //console.log(result)
         if (result.matchedCount){
-            navigate('/products')
+            navigate('/admin')
         }
         else{
             alert("Please enter valid details")

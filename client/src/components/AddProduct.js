@@ -12,11 +12,11 @@ const AddProduct=()=>{
     const addproduct=async ()=>{
         console.log(name,price,category,company)
         
-        const userid=JSON.parse(localStorage.getItem('user'))._id
+        //const userid=JSON.parse(localStorage.getItem('user'))._id
 
         let result = await fetch('http://127.0.0.1:3000/add',{
             method:'post',
-            body:JSON.stringify({userid,name,price,category,company}),
+            body:JSON.stringify({name,price,category,company}),
             headers:{
                 'Content-Type':'application/json',
                 'authorization':JSON.parse(localStorage.getItem('token'))
@@ -24,7 +24,7 @@ const AddProduct=()=>{
         })
         result=await result.json()
         if (result.name && result.price && result.category && result.company){
-            navigate('/products')
+            navigate('/admin')
         }
         else{
             alert("Please enter valid details")

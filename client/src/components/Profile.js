@@ -27,7 +27,7 @@ const Profile = () => {
         result=await result.json()
         if (result.modifiedCount){
             alert("Password Updated")
-            navigate('/products')
+            navigate('/userproducts')
         }
         else{
             alert("Enter Valid Details")

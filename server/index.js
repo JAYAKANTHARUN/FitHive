@@ -88,7 +88,7 @@ app.post('/add', verifytoken, async (req, res) => {
     }
 })
 
-app.get('/products', verifytoken, async (req, res) => {
+app.get('/admin', verifytoken, async (req, res) => {
     let products = await Product.find()
     if (products.length > 0) {
         res.send(products)
@@ -98,12 +98,12 @@ app.get('/products', verifytoken, async (req, res) => {
     }
 })
 
-app.delete('/product/:id', verifytoken, async (req, res) => {
+app.delete('/admin/:id', verifytoken, async (req, res) => {
     const result = await Product.deleteOne({ _id: req.params.id })
     res.send(result)
 })
 
-app.get('/product/:id', verifytoken, async (req, res) => {
+app.get('/admin/:id', verifytoken, async (req, res) => {
     let result = await Product.findOne({ _id: req.params.id })
     if (result) {
         res.send(result)
@@ -112,7 +112,7 @@ app.get('/product/:id', verifytoken, async (req, res) => {
         res.send({ result: "no product found" })
     }
 })
-app.post('/product/:id', verifytoken, async (req, res) => {
+app.post('/admin/:id', verifytoken, async (req, res) => {
     if (req.body.name && req.body.price && req.body.category && req.body.company) {
         let result = await Product.updateOne(
             { _id: req.params.id },

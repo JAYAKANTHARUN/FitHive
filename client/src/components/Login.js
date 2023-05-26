@@ -30,7 +30,7 @@ const Login=()=>{
         if (result.user.name && result.user.email && result.auth){
             localStorage.setItem("user",JSON.stringify(result.user))
             localStorage.setItem("token",JSON.stringify(result.auth))
-            navigate('/products')
+            navigate('/userproducts')
         }
         else{
             alert("Please enter valid details")
