@@ -154,6 +154,13 @@
   background-color: rgb(225, 210, 194);
   transform: scale(1.1);
 }
+.addproduct img{
+  width: 80px;
+  height: 80px;
+  border: 2px solid rgb(153, 62, 10);
+  border-radius: 5px;
+  margin-bottom: -50px;
+}
 
 .products{
   text-align: center;
@@ -168,7 +175,7 @@
 table {
   margin: auto;
   border-collapse: collapse;
-  width: 1200px;
+  width: 1400px;
   font-family: 'Raleway', sans-serif;
   font-size: 14px;
 }
@@ -187,6 +194,12 @@ td{
 }
 tbody tr:hover {
   background-color: #fbf4e8;
+}
+table img{
+  width: 80px;
+  height: 80px;
+  border: 2px solid rgb(153, 62, 10);
+  border-radius: 5px;
 }
 .products h3{
   margin: auto;

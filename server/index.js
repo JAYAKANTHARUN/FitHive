@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const cors = require('cors')
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.json({ limit: '10mb' }));
+
 const jwt = require('jsonwebtoken')
 const jwtkey = 'e-comm'
 
@@ -78,7 +81,8 @@ app.post('/adminlogin',async(req,res)=>{
 })
 
 app.post('/add', verifytoken, async (req, res) => {
-    if (req.body.name && req.body.price && req.body.category && req.body.company) {
+    console.log(req.body)
+    if (req.body.name && req.body.price && req.body.category && req.body.company && req.body.image) {
         let product = new Product(req.body)
         let result = await product.save()
         res.send(result)
@@ -113,7 +117,7 @@ app.get('/admin/:id', verifytoken, async (req, res) => {
     }
 })
 app.post('/admin/:id', verifytoken, async (req, res) => {
-    if (req.body.name && req.body.price && req.body.category && req.body.company) {
+    if (req.body.name && req.body.price && req.body.category && req.body.company && req.body.image) {
         let result = await Product.updateOne(
             { _id: req.params.id },
             {
@@ -122,6 +126,7 @@ app.post('/admin/:id', verifytoken, async (req, res) => {
                     price: req.body.price,
                     category: req.body.category,
                     company: req.body.company,
+                    image:req.body.image
                 }
             }
         )
