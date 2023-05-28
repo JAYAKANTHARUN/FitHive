@@ -92,7 +92,7 @@ app.post('/add', verifytoken, async (req, res) => {
     }
 })
 
-app.get('/admin', verifytoken, async (req, res) => {
+app.get('/admin',verifytoken, async (req, res) => {
     let products = await Product.find()
     if (products.length > 0) {
         res.send(products)
@@ -184,7 +184,16 @@ app.post('/profile',verifytoken, async (req, res) => {
     else {
         res.send({ result: "cannot update" })
     }
+})
 
+app.get('/userproducts',async (req, res) => {
+    let products = await Product.find()
+    if (products.length > 0) {
+        res.send(products)
+    }
+    else {
+        res.send({ products: "No products found", length: 0 })
+    }
 })
 
 function verifytoken(req, res, next) {
