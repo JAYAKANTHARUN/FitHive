@@ -195,6 +195,15 @@ app.get('/userproducts',async (req, res) => {
         res.send({ products: "No products found", length: 0 })
     }
 })
+app.get('/details/:id', async (req, res) => {
+    let result = await Product.findOne({ _id: req.params.id })
+    if (result) {
+        res.send(result)
+    }
+    else {
+        res.send({ result: "no product found" })
+    }
+})
 
 function verifytoken(req, res, next) {
     const token = req.headers['authorization']

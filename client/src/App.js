@@ -11,7 +11,8 @@ import UpdateProduct from './components/UpdateProduct'
 import Profile from './components/Profile'
 import AdminLogin from './components/AdminLogin'
 import AdminPrivate from './components/AdminPrivate'
-import UserProducts from './components/UserProducts';
+import UserProducts from './components/UserProducts'
+import Details from './components/Details';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route element={<Private />}>
             <Route path='/profile' element={<Profile />} />
           </Route>
+          <Route path='/details/:id' element={<Details />} />
           <Route path='/userproducts' element={<UserProducts />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/login' element={<Login />} />
