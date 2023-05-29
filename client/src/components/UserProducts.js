@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 const UserProducts = () => {
 
     const navigate = useNavigate()
-    const params=useParams()
+    const params = useParams()
 
     const [products, setproducts] = useState([])
     const userid = JSON.parse(localStorage.getItem('user'))._id
@@ -25,16 +25,23 @@ const UserProducts = () => {
     }
 
     const addtocart = async (id) => {
-        let result = await fetch(`http://127.0.0.1:3000/userproducts/${id}`,{
-            method:'post',
-            body:JSON.stringify({userid:userid,productid:id}),
-            headers:{
-                "Content-Type":"application/json",
-                'authorization':JSON.parse(localStorage.getItem('token'))
-            }
-        })
-        result=await result.json()
-        console.log(result)
+        if (userid) {
+            let result = await fetch(`http://127.0.0.1:3000/userproducts/${id}`, {
+                method: 'post',
+                body: JSON.stringify({ userid: userid, productid: id }),
+                headers: {
+                    "Content-Type": "application/json",
+                    'authorization': JSON.parse(localStorage.getItem('token'))
+                }
+            })
+            result = await result.json()
+            console.log(result)
+        }
+        else{
+            navigate('/login')
+        }
+
+
 
     }
 
