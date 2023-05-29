@@ -12,6 +12,7 @@ require('./db/config')
 const User = require('./db/User')
 const Product = require('./db/Product')
 const Admin = require('./db/Admin')
+const Cart = require('./db/Cart')
 
 app.use(express.json())
 app.use(cors())
@@ -31,10 +32,10 @@ app.post('/register', async (req, res) => {
                 res.send({ result, auth: token })
             })
         }
-        else{
-            res.send({result:"account present"})
+        else {
+            res.send({ result: "account present" })
         }
-    }    
+    }
     else {
         res.send({ result: "no user found" })
     }
@@ -59,18 +60,18 @@ app.post('/login', async (req, res) => {
         res.send({ user: "no user found" })
     }
 })
-app.post('/adminlogin',async(req,res)=>{
-    if (req.body.username && req.body.password){
-        let admin=await Admin.findOne(req.body).select("-password")
+app.post('/adminlogin', async (req, res) => {
+    if (req.body.username && req.body.password) {
+        let admin = await Admin.findOne(req.body).select("-password")
         //console.log(req.body,admin)
-        if (admin){
+        if (admin) {
             jwt.sign({ admin }, jwtkey, { expiresIn: "2h" }, (err, token) => {
                 if (err) {
                     res.send({ admin: "Something went wrong" })
                 }
                 res.send({ admin, auth: token })
             })
-        }   
+        }
         else {
             res.send({ admin: "no admin found" })
         }
@@ -92,7 +93,7 @@ app.post('/add', verifytoken, async (req, res) => {
     }
 })
 
-app.get('/admin',verifytoken, async (req, res) => {
+app.get('/admin', verifytoken, async (req, res) => {
     let products = await Product.find()
     if (products.length > 0) {
         res.send(products)
@@ -126,7 +127,7 @@ app.post('/admin/:id', verifytoken, async (req, res) => {
                     price: req.body.price,
                     category: req.body.category,
                     company: req.body.company,
-                    image:req.body.image
+                    image: req.body.image
                 }
             }
         )
@@ -158,7 +159,7 @@ app.get('/search/:key', verifytoken, async (req, res) => {
         res.send({ result: "product not found" })
     }
 })
-app.post('/profile',verifytoken, async (req, res) => {
+app.post('/profile', verifytoken, async (req, res) => {
     if (req.body.currentpassword && req.body.newpassword) {
         let result = await User.findOne({ _id: req.body.userid })
         if (result.password === req.body.currentpassword) {
@@ -186,7 +187,7 @@ app.post('/profile',verifytoken, async (req, res) => {
     }
 })
 
-app.get('/userproducts',async (req, res) => {
+app.get('/userproducts', async (req, res) => {
     let products = await Product.find()
     if (products.length > 0) {
         res.send(products)
@@ -203,6 +204,13 @@ app.get('/details/:id', async (req, res) => {
     else {
         res.send({ result: "no product found" })
     }
+})
+
+app.post('/userproducts/:id',verifytoken, async (req, res) => {
+    console.log(req.body)
+    let cart = new Cart(req.body)
+    let result = await cart.save()
+    res.send(result)
 })
 
 function verifytoken(req, res, next) {
