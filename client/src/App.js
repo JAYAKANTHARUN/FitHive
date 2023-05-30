@@ -12,7 +12,8 @@ import Profile from './components/Profile'
 import AdminLogin from './components/AdminLogin'
 import AdminPrivate from './components/AdminPrivate'
 import UserProducts from './components/UserProducts'
-import Details from './components/Details';
+import Details from './components/Details'
+import Cart from './components/Cart'
 
 function App() {
   return (
@@ -34,7 +35,7 @@ function App() {
           <Route path='/signup' element={<SignUp />} />
           <Route path='/login' element={<Login />} />
           <Route path='/adminlogin' element={<AdminLogin />} />
-
+          <Route path='/cart' element={<Cart />} />
         </Routes>
       </BrowserRouter>
       <Footer />

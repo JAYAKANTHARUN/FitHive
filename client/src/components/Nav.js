@@ -14,6 +14,7 @@ const Nav=()=>{
             <ul  className='navbar'>
                 <li><Link to='/'>FitHive</Link></li>
                 <li><Link to='/userproducts'>Products</Link></li>
+                <li><Link to='/cart'>Cart</Link></li>
                 {/* <li><Link to='/add'>Add Products</Link></li> */}
                 {/* <li><Link to='/update'>Update Products</Link></li>
                 <li><Link to='/delete'>Delete Products</Link></li> */}

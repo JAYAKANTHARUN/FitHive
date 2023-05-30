@@ -24,12 +24,12 @@ const UserProducts = () => {
         navigate(`/details/${id}`)
     }
 
-    const addtocart = async (id) => {
+    const addtocart = async (id,name,price,company,category,image) => {
         if (auth) {
             let userid=auth._id
             let result = await fetch(`http://127.0.0.1:3000/userproducts/${id}`, {
                 method: 'post',
-                body: JSON.stringify({ userid: userid, productid: id }),
+                body: JSON.stringify({ userid:userid,productid:id,name:name,company:company,category:category,price:price,image:image}),
                 headers: {
                     "Content-Type": "application/json",
                     'authorization': JSON.parse(localStorage.getItem('token'))
@@ -41,9 +41,6 @@ const UserProducts = () => {
         else{
             navigate('/login')
         }
-
-
-
     }
 
     return (
@@ -52,12 +49,12 @@ const UserProducts = () => {
                 <h3>No Products Found</h3>
             ) : (
                 products.map((item, index) => (
-                    <div classname="product" key={index}>
+                    <div className="product" key={index}>
                         <img src={item.image} alt="loading" />
                         <p className="name">{item.name}</p>
                         <p className="company">{item.company}</p>
                         <p className="price">${item.price}</p>
-                        <button onClick={() => { gotodetails(item._id) }}>Details</button> <button onClick={() => { addtocart(item._id) }}>Add to Cart</button>
+                        <button onClick={() => { gotodetails(item._id) }}>Details</button> <button onClick={() => { addtocart(item._id,item.name,item.price,item.company,item.category,item.image) }}>Add to Cart</button>
                     </div>
                 ))
             )}

@@ -205,12 +205,20 @@ app.get('/details/:id', async (req, res) => {
         res.send({ result: "no product found" })
     }
 })
-
 app.post('/userproducts/:id',verifytoken, async (req, res) => {
     console.log(req.body)
     let cart = new Cart(req.body)
     let result = await cart.save()
     res.send(result)
+})
+app.get('/cart/:id',verifytoken,async(req,res)=>{
+    let cart = await Cart.find({userid:req.params.id})
+    if (cart.length > 0) {
+        res.send(cart)
+    }
+    else {
+        res.send({ cart: "No cart found", length: 0 })
+    }
 })
 
 function verifytoken(req, res, next) {
