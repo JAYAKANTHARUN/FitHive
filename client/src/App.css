@@ -409,6 +409,19 @@ table img{
   text-align: center;
   margin: 50px;
 }
+.details button{
+  font-size: 15px;
+  color: rgb(118, 79, 36);
+  background-color: rgb(241, 238, 235);
+  border: 2px solid rgb(153, 62, 10);
+  border-radius: 20px;
+  padding: 10px;
+  transition: all 0.5s ease;
+}
+.details button:hover{
+  background-color: rgb(225, 210, 194);
+  transform: scale(1.05);
+}
 .detailsflex{
   display: flex;
   justify-content: center;
@@ -422,7 +435,6 @@ table img{
 .imageflex{
   display: flex;
   justify-content: flex-start;
-  margin: 40px;
   margin-left: -20px;
 }
 .imageflex > div{

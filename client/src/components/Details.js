@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const Details = () => {
@@ -10,6 +10,7 @@ const Details = () => {
     const [company, setcompany] = useState('')
     const [image, setimage] = useState('')
     const params = useParams()
+    const navigate=useNavigate()
 
     useEffect(() => {
         getdetails()
@@ -24,12 +25,31 @@ const Details = () => {
         setcompany(result.company)
         setimage(result.image)
     }
+    const auth = JSON.parse(localStorage.getItem('user'))
 
     const [rating, setRating] = useState(4);
 
     const handleStarClick = (starIndex) => {
         setRating(starIndex + 1);
     };
+    const addtocart = async (id,name,price,company,category,image) => {
+        if (auth) {
+            let userid=auth._id
+            let result = await fetch(`http://127.0.0.1:3000/userproducts/${id}`, {
+                method: 'post',
+                body: JSON.stringify({ userid:userid,productid:id,name:name,company:company,category:category,price:price,image:image}),
+                headers: {
+                    "Content-Type": "application/json",
+                    'authorization': JSON.parse(localStorage.getItem('token'))
+                }
+            })
+            result = await result.json()
+            console.log(result)
+        }
+        else{
+            navigate('/login')
+        }
+    }
 
     return (
         <div className="details">
@@ -57,6 +77,7 @@ const Details = () => {
                     <p className="mrp">M.R.P - ${Math.round(price * 100.00 / 70.00)}</p>
                     <p className="deals">Deal of the Day</p>
                     <p className="tax">Inclusive of all Taxes</p>
+                    <hr />
                     <div className="imageflex">
                         <div className="imageelement">
                             <img src="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/icon-cod._CB485937110_.png" alt="loading" /><br />
@@ -79,12 +100,15 @@ const Details = () => {
                             <span className="imageabout">Secure Transaction</span>
                         </div>
                     </div>
+                    <hr />
                     <div>
                         <p className="heading">About this Item - </p>
                         <p className="about">Category - {category}</p>
                         <p className="about">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, et.</p>
                         <p className="about">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, eos fuga? Officiis esse laudantium.</p>
                     </div>
+                    <hr />
+                    <button onClick={() => { addtocart(params.id,name,price,company,category,image) }}>Add to Cart</button>
                 </div>
             </div>
 
