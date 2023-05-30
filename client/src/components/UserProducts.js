@@ -9,7 +9,7 @@ const UserProducts = () => {
     const params = useParams()
 
     const [products, setproducts] = useState([])
-    const userid = JSON.parse(localStorage.getItem('user'))._id
+    const auth = JSON.parse(localStorage.getItem('user'))
 
     useEffect(() => {
         getproducts()
@@ -25,7 +25,8 @@ const UserProducts = () => {
     }
 
     const addtocart = async (id) => {
-        if (userid) {
+        if (auth) {
+            let userid=auth._id
             let result = await fetch(`http://127.0.0.1:3000/userproducts/${id}`, {
                 method: 'post',
                 body: JSON.stringify({ userid: userid, productid: id }),
