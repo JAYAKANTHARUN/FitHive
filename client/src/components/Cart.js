@@ -11,7 +11,7 @@ const Cart = () => {
 
     useEffect(() => {
         getcart()
-    }, [])  
+    }, [])
 
     const getcart = async () => {
         if (auth) {
@@ -29,9 +29,9 @@ const Cart = () => {
             navigate('/login')
         }
     }
-    
 
-    return(
+
+    return (
         <div className="cartpage">
             <h1>Cart</h1>
             <div className="cart">
@@ -39,17 +39,33 @@ const Cart = () => {
                     <h3>No Cart Found</h3>
                 ) : (
                     cart.map((item, index) => (
-                        <div className="cartitem" key={index}>
-                            <img src={item.image} alt="loading" />
-                            <p>{item.name}</p>
-                            <p>{item.company}</p>
-                            <p>{item.category}</p>
-                            <p>${item.price}</p>
+                        <div>
+                            <div className="cartitem" key={index}>
+                                <div>
+                                    <img src={item.image} alt="loading" />
+                                </div>
+                                <div>
+                                    <p>Item - {item.name}</p>
+                                </div>
+                                <div>
+                                    <p>Company - {item.company}</p>
+                                </div>
+                                <div>
+                                    <p>Category - {item.category}</p>
+                                </div>
+                                <div>
+                                    <p>Price - ${item.price}</p>
+                                </div>
+                                <div className="incdec">
+                                    <button className="quantity"> - </button><span> 1 </span><button className="quantity"> + </button>
+                                </div>
+                            </div>
                             <hr />
                         </div>
                     ))
                 )}
             </div>
+            <button className="proceed">Proceed to Payment</button>
         </div>
 
 

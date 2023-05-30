@@ -525,6 +525,65 @@ table img{
   color: rgb(118, 79, 36); /* Yellow star color */
 }
 
+.cartpage{
+  text-align: center;
+}
+.proceed{
+  font-size: 15px;
+  color: rgb(118, 79, 36);
+  background-color: rgb(241, 238, 235);
+  border: 2px solid rgb(153, 62, 10);
+  border-radius: 20px;
+  padding: 10px;
+  transition: all 0.5s ease;
+  margin: 20px;
+}
+.proceed:hover{
+  background-color: rgb(225, 210, 194);
+  transform: scale(1.05);
+}
+.cartpage h1{
+  text-align: center;
+  color:rgb(72, 39, 3) ;
+  font-size: 30px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bolder;
+  margin: 20px;
+}
+.cartitem img{
+  width: 80px;
+  height: 80px;
+  border: 2px solid rgb(153, 62, 10);
+  border-radius: 5px;
+  margin: 10px;
+}
+.cartitem p{
+  color:rgb(118, 79, 36);
+  font-size: 20px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: lighter;
+  margin: 5px;
+}
+.cartitem{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+.quantity{
+  font-size: 15px;
+  color: rgb(118, 79, 36);
+  background-color: rgb(241, 238, 235);
+  border: 2px solid rgb(153, 62, 10);
+  border-radius: 60px;
+  transition: all 0.5s ease;
+  padding: 10px;
+}
+.quantity:hover{
+  background-color: rgb(225, 210, 194);
+  transform: scale(1.05);
+}
+
 /* 
 
 .App {
