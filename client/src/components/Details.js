@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams,useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const Details = () => {
@@ -9,15 +9,16 @@ const Details = () => {
     const [category, setcategory] = useState('')
     const [company, setcompany] = useState('')
     const [image, setimage] = useState('')
-    const [star,setstar]=useState('')
-    const [rating,setrating]=useState('')
-    const [discount,setdiscount]=useState('')
-    const [about,setabout]=useState('')
+    const [star, setstar] = useState('')
+    const [rating, setrating] = useState('')
+    const [discount, setdiscount] = useState('')
+    const [about, setabout] = useState('')
+    const [quantity, setquantity] = useState('1');
     const params = useParams()
-    const navigate=useNavigate()
+    const navigate = useNavigate()
 
     useEffect(() => {
-        const parsedstar=parseInt(star)
+        const parsedstar = parseInt(star)
         setstarcount(parsedstar)
         getdetails()
     }, [star])
@@ -42,12 +43,12 @@ const Details = () => {
     const handleStarClick = (starIndex) => {
         setstarcount(starIndex + 1);
     };
-    const addtocart = async (id,name,price,company,category,image) => {
+    const addtocart = async (id, name, price, company, category, image, quantity) => {
         if (auth) {
-            let userid=auth._id
+            let userid = auth._id
             let result = await fetch(`http://127.0.0.1:3000/userproducts/${id}`, {
                 method: 'post',
-                body: JSON.stringify({ userid:userid,productid:id,name:name,company:company,category:category,price:price,image:image}),
+                body: JSON.stringify({ userid: userid, productid: id, name: name, company: company, category: category, price: price, image: image, quantity: quantity }),
                 headers: {
                     "Content-Type": "application/json",
                     'authorization': JSON.parse(localStorage.getItem('token'))
@@ -56,9 +57,12 @@ const Details = () => {
             result = await result.json()
             console.log(result)
         }
-        else{
+        else {
             navigate('/login')
         }
+    }
+    const handlequantity = (e) => {
+        setquantity(e.target.value)
     }
 
     return (
@@ -84,7 +88,7 @@ const Details = () => {
                     <div className="amount">
                         <p className="red">-{discount}%  </p><p className="discount">${price}</p>
                     </div>
-                    <p className="mrp">M.R.P - ${Math.round(price * 100.00 / (100.00-discount))}</p>
+                    <p className="mrp">M.R.P - ${Math.round(price * 100.00 / (100.00 - discount))}</p>
                     <p className="deals">Deal of the Day</p>
                     <p className="tax">Inclusive of all Taxes</p>
                     <hr />
@@ -117,7 +121,17 @@ const Details = () => {
                         <p className="about">{about}</p>
                     </div>
                     <hr />
-                    <button onClick={() => { addtocart(params.id,name,price,company,category,image) }}>Add to Cart</button>
+                    <div className="quantitydropdown">
+                        <label className="quantitylabel">Quantity : </label>
+                        <select id="quantity" value={quantity} onChange={handlequantity}>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <button onClick={() => { addtocart(params.id, name, price, company, category, image, quantity) }}>Add to Cart</button>
                 </div>
             </div>
 

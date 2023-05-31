@@ -8,7 +8,8 @@ const cartschema = new mongoose.Schema({
     company:String,
     category:String,
     price:String,
-    image:String
+    image:String,
+    quantity:String
 })
 
 module.exports=mongoose.model('cart',cartschema)
