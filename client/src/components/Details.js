@@ -40,9 +40,9 @@ const Details = () => {
 
     const [starcount, setstarcount] = useState(parseFloat(star));
 
-    const handleStarClick = (starIndex) => {
-        setstarcount(starIndex + 1);
-    };
+    // const handleStarClick = (starIndex) => {
+    //     setstarcount(starIndex + 1);
+    // };
     const addtocart = async (id, name, price, company, category, image, quantity) => {
         if (auth) {
             let userid = auth._id
@@ -79,7 +79,7 @@ const Details = () => {
                             <span
                                 key={index}
                                 className={index < starcount ? 'star filled' : 'star'}
-                                onClick={() => handleStarClick(index)}
+                                // onClick={() => handleStarClick(index)}
                             >
                                 &#9733;
                             </span>
@@ -88,7 +88,7 @@ const Details = () => {
                     <div className="amount">
                         <p className="red">-{discount}%  </p><p className="discount">${price}</p>
                     </div>
-                    <p className="mrp">M.R.P - ${Math.round(price * 100.00 / (100.00 - discount))}</p>
+                    <p className="mrp">M.R.P - ${Math.round(price/(1-(discount/100)))}</p>
                     <p className="deals">Deal of the Day</p>
                     <p className="tax">Inclusive of all Taxes</p>
                     <hr />

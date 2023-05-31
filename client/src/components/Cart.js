@@ -128,8 +128,6 @@ const Cart = () => {
             </div>
             <button className="proceed">Proceed to Payment</button>
         </div>
-
-
     )
 }
 

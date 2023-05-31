@@ -373,10 +373,12 @@ table img{
   text-align: center;
 }
 .name{
-  font-size: 17px ;
+  font-size: 20px ;
   color: rgb(153, 62, 10);
   font-family: 'Raleway', sans-serif;
   font-weight: bolder;
+  margin: -5px;
+  margin-top: 5px;
 }
 .company{
   font-size: 16px ;
@@ -388,6 +390,16 @@ table img{
   color: rgb(153, 62, 10);
   font-family: 'Raleway', sans-serif;
   font-weight: bolder;
+}
+.useramount{
+  margin: 5px;
+}
+.userrating{
+  font-size: 17px;
+  color: rgb(118, 79, 36);
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  margin: -5px;
 }
 .userproducts button{
   font-size: 15px;
@@ -476,11 +488,14 @@ table img{
 }
 .discount{
   display: inline;
+  color: rgb(118, 79, 36);
   font-size: 25px;
   color: 'Raleway', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
 }
 .mrp{
-  font-size: 17px;
+  font-size: 19px;
   color: rgb(118, 79, 36);
   font-family: 'Raleway', sans-serif;
   font-weight: lighter;

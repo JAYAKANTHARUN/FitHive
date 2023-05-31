@@ -23,25 +23,11 @@ const UserProducts = () => {
     const gotodetails = (id) => {
         navigate(`/details/${id}`)
     }
+    // const [starcount, setstarcount] = useState(parseFloat(star));
 
-    const addtocart = async (id,name,price,company,category,image) => {
-        if (auth) {
-            let userid=auth._id
-            let result = await fetch(`http://127.0.0.1:3000/userproducts/${id}`, {
-                method: 'post',
-                body: JSON.stringify({ userid:userid,productid:id,name:name,company:company,category:category,price:price,image:image}),
-                headers: {
-                    "Content-Type": "application/json",
-                    'authorization': JSON.parse(localStorage.getItem('token'))
-                }
-            })
-            result = await result.json()
-            console.log(result)
-        }
-        else{
-            navigate('/login')
-        }
-    }
+    // const handleStarClick = (starIndex) => {
+    //     setstarcount(starIndex + 1);
+    // };
 
     return (
         <div className="userproducts">
@@ -49,12 +35,25 @@ const UserProducts = () => {
                 <h3>No Products Found</h3>
             ) : (
                 products.map((item, index) => (
-                    <div className="product" key={index}>
+                    <div onClick={() => { gotodetails(item._id) }} className="product" key={index}>
                         <img src={item.image} alt="loading" />
                         <p className="name">{item.name}</p>
                         <p className="company">{item.company}</p>
-                        <p className="price">${item.price}</p>
-                        <button onClick={() => { gotodetails(item._id) }}>Details</button> <button onClick={() => { addtocart(item._id,item.name,item.price,item.company,item.category,item.image) }}>Add to Cart</button>
+                        <div className="useramount">
+                            <p className="red">-{item.discount}% Off  </p><p className="discount">${item.price}</p>
+                        </div>
+                        <p className="mrp"> M.R.P - ${Math.round(item.price / (1 - (item.discount / 100)))}</p>
+                        <div className="userrating">
+                            {item.star}.0 - {[...Array(5)].map((_, index) => (
+                                <span
+                                    key={index}
+                                    className={index < parseFloat(item.star) ? 'star filled' : 'star'}
+                                    // onClick={() => handleStarClick(index)}
+                                >
+                                    &#9733;
+                                </span>
+                            ))}
+                        </div>
                     </div>
                 ))
             )}
