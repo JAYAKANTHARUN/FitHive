@@ -30,13 +30,71 @@ const Cart = () => {
         }
     }
 
+    const decquantity = async (cartid) => {
+        let result = await fetch(`http://127.0.0.1:3000/changequantity/${cartid}`, {
+            headers: {
+                'authorization': JSON.parse(localStorage.getItem('token'))
+            }
+        })
+        result = await result.json()
+        if (result.quantity === '1') {
+            let result = await fetch(`http://127.0.0.1:3000/removequantity/${cartid}`, {
+                method: 'delete',
+                headers: {
+                    'authorization': JSON.parse(localStorage.getItem('token'))
+                }
+            })
+            result = await result.json()
+            getcart()
+        }
+        else {
+            result = await fetch(`http://127.0.0.1:3000/decquantity/${cartid}`, {
+                method: 'post',
+                body: JSON.stringify({ quantity: result.quantity }),
+                headers: {
+                    "Content-Type": "application/json",
+                    'authorization': JSON.parse(localStorage.getItem('token'))
+                }
+            })
+            result = await result.json()
+            getcart()
+        }
+    }
+    const incquantity = async (cartid) => {
+        let result = await fetch(`http://127.0.0.1:3000/changequantity/${cartid}`, {
+            headers: {
+                'authorization': JSON.parse(localStorage.getItem('token'))
+            }
+        })
+        result = await result.json()
+        result = await fetch(`http://127.0.0.1:3000/incquantity/${cartid}`, {
+            method: 'post',
+            body: JSON.stringify({ quantity: result.quantity }),
+            headers: {
+                "Content-Type": "application/json",
+                'authorization': JSON.parse(localStorage.getItem('token'))
+            }
+        })
+        result = await result.json()
+        getcart()
+    }
+    const remove = async (cartid) => {
+        let result = await fetch(`http://127.0.0.1:3000/removequantity/${cartid}`, {
+            method: 'delete',
+            headers: {
+                'authorization': JSON.parse(localStorage.getItem('token'))
+            }
+        })
+        result = await result.json()
+        getcart()
+    }
 
     return (
         <div className="cartpage">
             <h1>Cart</h1>
             <div className="cart">
                 {cart.length === 0 ? (
-                    <h3>No Cart Found</h3>
+                    <h3>Your cart is Empty</h3>
                 ) : (
                     cart.map((item, index) => (
                         <div>
@@ -57,7 +115,10 @@ const Cart = () => {
                                     <p>Price - ${item.price}</p>
                                 </div>
                                 <div className="incdec">
-                                    <button className="quantity"> - </button><span> 1 </span><button className="quantity"> + </button>
+                                    <button className="quantity" onClick={() => { decquantity(item._id) }}> - </button><span> {item.quantity} </span><button className="quantity" onClick={() => { incquantity(item._id) }}> + </button>
+                                </div>
+                                <div>
+                                    <button className="remove" onClick={() => { remove(item._id) }}> Remove </button>
                                 </div>
                             </div>
                             <hr />

@@ -229,6 +229,54 @@ app.get('/cart/:id',verifytoken,async(req,res)=>{
         res.send({ cart: "No cart found", length: 0 })
     }
 })
+app.get('/changequantity/:id',verifytoken,async(req,res)=>{
+    let result = await Cart.findOne({_id:req.params.id})
+    console.log(result)
+    if (result){
+        res.send(result)
+    }
+    else{
+        res.send({result:"no quantity found"})
+    }
+})
+app.post('/decquantity/:id',verifytoken,async(req,res)=>{
+    let quantity = parseInt(req.body.quantity)-1
+    let result = await Cart.updateOne(
+        { _id: req.params.id },
+        {
+            $set: {
+                quantity: quantity
+            }
+        }
+    )
+    if (result){
+        res.send(result)
+    }
+    else{
+        res.send({result:"no quantity changed"})
+    }
+})
+app.post('/incquantity/:id',verifytoken,async(req,res)=>{
+    let quantity = parseInt(req.body.quantity)+1
+    let result = await Cart.updateOne(
+        { _id: req.params.id },
+        {
+            $set: {
+                quantity: quantity
+            }
+        }
+    )
+    if (result){
+        res.send(result)
+    }
+    else{
+        res.send({result:"no quantity changed"})
+    }
+})
+app.delete('/removequantity/:id', verifytoken, async (req, res) => {
+    const result = await Cart.deleteOne({ _id: req.params.id })
+    res.send(result)
+})
 
 function verifytoken(req, res, next) {
     const token = req.headers['authorization']
