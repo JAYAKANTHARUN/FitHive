@@ -84,6 +84,8 @@ const Products = () => {
                                     <th scope="col">Price</th>
                                     <th scope="col">Category</th>
                                     <th scope="col">Company</th>
+                                    <th scope="col">Star</th>
+                                    <th scope="col">Discount</th>
                                     <th scope="col">Image</th>
                                     <th scope="col">Operation</th>
 
@@ -98,6 +100,8 @@ const Products = () => {
                                             <td>{item.price}</td>
                                             <td>{item.category}</td>
                                             <td>{item.company}</td>
+                                            <td>{item.star} Star</td>
+                                            <td>{item.discount}%</td>
                                             <td><img src={item.image} alt="loading" /></td>
                                             <td><button onClick={() => deleteproduct(item._id)}>Delete</button><button onClick={() => updateproduct(item._id)}>Update</button></td>
                                         </tr>

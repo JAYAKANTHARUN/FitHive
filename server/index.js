@@ -83,7 +83,7 @@ app.post('/adminlogin', async (req, res) => {
 
 app.post('/add', verifytoken, async (req, res) => {
     console.log(req.body)
-    if (req.body.name && req.body.price && req.body.category && req.body.company && req.body.image) {
+    if (req.body.name && req.body.price && req.body.category && req.body.company && req.body.image && req.body.star && req.body.rating && req.body.discount && req.body.about) {
         let product = new Product(req.body)
         let result = await product.save()
         res.send(result)
@@ -118,7 +118,7 @@ app.get('/admin/:id', verifytoken, async (req, res) => {
     }
 })
 app.post('/admin/:id', verifytoken, async (req, res) => {
-    if (req.body.name && req.body.price && req.body.category && req.body.company && req.body.image) {
+    if (req.body.name && req.body.price && req.body.category && req.body.company && req.body.image && req.body.star && req.body.rating && req.body.discount && req.body.about) {
         let result = await Product.updateOne(
             { _id: req.params.id },
             {
@@ -127,7 +127,11 @@ app.post('/admin/:id', verifytoken, async (req, res) => {
                     price: req.body.price,
                     category: req.body.category,
                     company: req.body.company,
-                    image: req.body.image
+                    image: req.body.image,
+                    star: req.body.star,
+                    rating: req.body.rating,
+                    discount: req.body.discount,
+                    about: req.body.about,
                 }
             }
         )
@@ -149,7 +153,12 @@ app.get('/search/:key', verifytoken, async (req, res) => {
             { name: { $regex: req.params.key } },
             { price: { $regex: req.params.key } },
             { category: { $regex: req.params.key } },
-            { company: { $regex: req.params.key } }
+            { company: { $regex: req.params.key } },
+            { star: { $regex: req.params.key } },
+            { rating: { $regex: req.params.key } },
+            { discount: { $regex: req.params.key } },
+            { about: { $regex: req.params.key } },
+
         ]
     })
     if (result) {

@@ -9,12 +9,18 @@ const Details = () => {
     const [category, setcategory] = useState('')
     const [company, setcompany] = useState('')
     const [image, setimage] = useState('')
+    const [star,setstar]=useState('')
+    const [rating,setrating]=useState('')
+    const [discount,setdiscount]=useState('')
+    const [about,setabout]=useState('')
     const params = useParams()
     const navigate=useNavigate()
 
     useEffect(() => {
+        const parsedstar=parseInt(star)
+        setstarcount(parsedstar)
         getdetails()
-    }, [])
+    }, [star])
 
     const getdetails = async () => {
         let result = await fetch(`http://127.0.0.1:3000/details/${params.id}`)
@@ -24,13 +30,17 @@ const Details = () => {
         setcategory(result.category)
         setcompany(result.company)
         setimage(result.image)
+        setstar(result.star)
+        setrating(result.rating)
+        setdiscount(result.discount)
+        setabout(result.about)
     }
     const auth = JSON.parse(localStorage.getItem('user'))
 
-    const [rating, setRating] = useState(4);
+    const [starcount, setstarcount] = useState(parseFloat(star));
 
     const handleStarClick = (starIndex) => {
-        setRating(starIndex + 1);
+        setstarcount(starIndex + 1);
     };
     const addtocart = async (id,name,price,company,category,image) => {
         if (auth) {
@@ -61,20 +71,20 @@ const Details = () => {
                 <div className="detailspara">
                     <p className="brand">Brand - {company}</p>
                     <div className="rating">
-                        4.0 - {[...Array(5)].map((_, index) => (
+                        {star}.0 - {[...Array(5)].map((_, index) => (
                             <span
                                 key={index}
-                                className={index < rating ? 'star filled' : 'star'}
+                                className={index < starcount ? 'star filled' : 'star'}
                                 onClick={() => handleStarClick(index)}
                             >
                                 &#9733;
                             </span>
-                        ))} <a href=''> 135 Ratings</a>
+                        ))} <a href=''> {rating} Ratings</a>
                     </div>
                     <div className="amount">
-                        <p className="red">-70%  </p><p className="discount">${price}</p>
+                        <p className="red">-{discount}%  </p><p className="discount">${price}</p>
                     </div>
-                    <p className="mrp">M.R.P - ${Math.round(price * 100.00 / 70.00)}</p>
+                    <p className="mrp">M.R.P - ${Math.round(price * 100.00 / (100.00-discount))}</p>
                     <p className="deals">Deal of the Day</p>
                     <p className="tax">Inclusive of all Taxes</p>
                     <hr />
@@ -104,8 +114,7 @@ const Details = () => {
                     <div>
                         <p className="heading">About this Item - </p>
                         <p className="about">Category - {category}</p>
-                        <p className="about">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, et.</p>
-                        <p className="about">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, eos fuga? Officiis esse laudantium.</p>
+                        <p className="about">{about}</p>
                     </div>
                     <hr />
                     <button onClick={() => { addtocart(params.id,name,price,company,category,image) }}>Add to Cart</button>
