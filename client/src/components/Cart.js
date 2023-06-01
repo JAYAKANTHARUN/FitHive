@@ -9,7 +9,7 @@ const Cart = () => {
 
     const [cart, setcart] = useState([])
 
-    const [totalamount,settotalamount]=useState('')
+    const [totalamount, settotalamount] = useState('')
 
     useEffect(() => {
         getcart()
@@ -23,12 +23,15 @@ const Cart = () => {
                 }
             })
             result = await result.json()
-            if (result) {
+            if (result.length !== 0) {
                 let sum = 0
                 result.map((item, index) => (
-                    sum = sum + parseFloat(item.price)*parseFloat(item.quantity)
+                    sum = sum + parseFloat(item.price) * parseFloat(item.quantity)
                 ))
                 settotalamount(sum)
+                setcart(result)
+            }
+            else{
                 setcart(result)
             }
         }
@@ -95,7 +98,7 @@ const Cart = () => {
         result = await result.json()
         getcart()
     }
-    const handleproceedcheckout=(userid)=>{
+    const handleproceedcheckout = (userid) => {
         navigate(`/checkout/${userid}`)
     }
 
@@ -136,11 +139,20 @@ const Cart = () => {
                     ))
                 )}
             </div>
-            <div className="totalamount">
-                <p>Total Payable Amount : ₹{totalamount}</p>
-            </div>
-            <hr />
-            <button className="proceed" onClick={()=>{handleproceedcheckout(auth._id)}}>Proceed to Checkout</button>
+            {cart.length === 0 ? (
+                <h3></h3>
+            ) : (
+                <>
+                    <div className="totalamount">
+                        <p>Total Payable Amount: ₹{totalamount}</p>
+                    </div>
+                    <hr />
+                    <button className="proceed" onClick={() => handleproceedcheckout(auth._id)}>
+                        Proceed to Checkout
+                    </button>
+                </>
+            )}
+
         </div>
     )
 }
