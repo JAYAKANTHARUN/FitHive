@@ -9,6 +9,8 @@ const Cart = () => {
 
     const [cart, setcart] = useState([])
 
+    const [totalamount,settotalamount]=useState('')
+
     useEffect(() => {
         getcart()
     }, [])
@@ -22,6 +24,11 @@ const Cart = () => {
             })
             result = await result.json()
             if (result) {
+                let sum = 0
+                result.map((item, index) => (
+                    sum = sum + parseFloat(item.price)*parseFloat(item.quantity)
+                ))
+                settotalamount(sum)
                 setcart(result)
             }
         }
@@ -112,13 +119,13 @@ const Cart = () => {
                                     <p>Category - {item.category}</p>
                                 </div>
                                 <div>
-                                    <p>Price - ${item.price}</p>
+                                    <p>Price - ${item.price} x {item.quantity}</p>
                                 </div>
                                 <div className="incdec">
                                     <button className="quantity" onClick={() => { decquantity(item._id) }}> - </button><span> {item.quantity} </span><button className="quantity" onClick={() => { incquantity(item._id) }}> + </button>
                                 </div>
                                 <div>
-                                    <button className="remove" onClick={() => { remove(item._id) }}> Remove </button>
+                                    <button className="remove" onClick={() => { remove(item._id) }}> Remove Item </button>
                                 </div>
                             </div>
                             <hr />
@@ -126,6 +133,10 @@ const Cart = () => {
                     ))
                 )}
             </div>
+            <div className="totalamount">
+                <p>Total Payable Amount : ${totalamount}</p>
+            </div>
+            <hr />
             <button className="proceed">Proceed to Payment</button>
         </div>
     )
