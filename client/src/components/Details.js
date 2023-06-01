@@ -86,9 +86,9 @@ const Details = () => {
                         ))} <a href=''> {rating} Ratings</a>
                     </div>
                     <div className="amount">
-                        <p className="red">-{discount}%  </p><p className="discount">${price}</p>
+                        <p className="red">-{discount}%  </p><p className="discount">₹{price}</p>
                     </div>
-                    <p className="mrp">M.R.P - ${Math.round(price/(1-(discount/100)))}</p>
+                    <p className="mrp">M.R.P - ₹{Math.round(price/(1-(discount/100)))}</p>
                     <p className="deals">Deal of the Day</p>
                     <p className="tax">Inclusive of all Taxes</p>
                     <hr />

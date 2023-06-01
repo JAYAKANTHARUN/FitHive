@@ -40,9 +40,9 @@ const UserProducts = () => {
                         <p className="name">{item.name}</p>
                         <p className="company">{item.company}</p>
                         <div className="useramount">
-                            <p className="red">-{item.discount}% Off  </p><p className="discount">${item.price}</p>
+                            <p className="red">-{item.discount}% Off  </p><p className="discount">₹{item.price}</p>
                         </div>
-                        <p className="mrp"> M.R.P - ${Math.round(item.price / (1 - (item.discount / 100)))}</p>
+                        <p className="mrp"> M.R.P - ₹{Math.round(item.price / (1 - (item.discount / 100)))}</p>
                         <div className="userrating">
                             {item.star}.0 - {[...Array(5)].map((_, index) => (
                                 <span

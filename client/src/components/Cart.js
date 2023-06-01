@@ -95,6 +95,9 @@ const Cart = () => {
         result = await result.json()
         getcart()
     }
+    const handleproceedcheckout=(userid)=>{
+        navigate(`/checkout/${userid}`)
+    }
 
     return (
         <div className="cartpage">
@@ -119,7 +122,7 @@ const Cart = () => {
                                     <p>Category - {item.category}</p>
                                 </div>
                                 <div>
-                                    <p>Price - ${item.price} x {item.quantity}</p>
+                                    <p>Price - ₹{item.price} x {item.quantity}</p>
                                 </div>
                                 <div className="incdec">
                                     <button className="quantity" onClick={() => { decquantity(item._id) }}> - </button><span> {item.quantity} </span><button className="quantity" onClick={() => { incquantity(item._id) }}> + </button>
@@ -134,10 +137,10 @@ const Cart = () => {
                 )}
             </div>
             <div className="totalamount">
-                <p>Total Payable Amount : ${totalamount}</p>
+                <p>Total Payable Amount : ₹{totalamount}</p>
             </div>
             <hr />
-            <button className="proceed">Proceed to Payment</button>
+            <button className="proceed" onClick={()=>{handleproceedcheckout(auth._id)}}>Proceed to Checkout</button>
         </div>
     )
 }

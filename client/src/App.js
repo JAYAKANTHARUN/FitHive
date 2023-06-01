@@ -14,6 +14,7 @@ import AdminPrivate from './components/AdminPrivate'
 import UserProducts from './components/UserProducts'
 import Details from './components/Details'
 import Cart from './components/Cart'
+import Checkout from './components/Checkout';
 
 function App() {
   return (
@@ -29,13 +30,15 @@ function App() {
           </Route>
           <Route element={<Private />}>
             <Route path='/profile' element={<Profile />} />
+            <Route path='/cart' element={<Cart />} />
+            <Route path='/checkout/:id' element={< Checkout />} />
           </Route>
           <Route path='/details/:id' element={<Details />} />
           <Route path='/userproducts' element={<UserProducts />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/login' element={<Login />} />
           <Route path='/adminlogin' element={<AdminLogin />} />
-          <Route path='/cart' element={<Cart />} />
+          
         </Routes>
       </BrowserRouter>
       <Footer />
