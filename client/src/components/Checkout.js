@@ -1,14 +1,62 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
+
+    const auth = JSON.parse(localStorage.getItem('user'))
 
     const [ordername, setordername] = useState('')
     const [ordermobilenumber, setordermobilenumber] = useState('')
     const [orderaddress, setorderaddress] = useState('')
     const [paymentmethod, setpaymentmethod] = useState('cod')
 
-    const handleplaceorderandpay = () => {
-        console.log(ordername, ordermobilenumber, orderaddress, paymentmethod)
+    const [cart, setcart] = useState([])
+
+    const navigate = useNavigate()
+
+    const [totalamount, settotalamount] = useState('')
+
+    useEffect(() => {
+        getcart()
+    }, [])
+
+    const getcart = async () => {
+        if (auth) {
+            let result = await fetch(`http://127.0.0.1:3000/cart/${auth._id}`, {
+                headers: {
+                    'authorization': JSON.parse(localStorage.getItem('token'))
+                }
+            })
+            result = await result.json()
+            if (result.length !== 0) {
+                let sum = 0
+                result.map((item, index) => (
+                    sum = sum + parseFloat(item.price) * parseFloat(item.quantity)
+                ))
+                settotalamount(sum)
+                setcart(result)
+            }
+            else{
+                setcart(result)
+            }
+        }
+        else {
+            navigate('/login')
+        }
+    }
+
+    const handleplaceorderandpay = async() => {
+        // console.log(ordername, ordermobilenumber, orderaddress, paymentmethod, totalamount, new Date(), cart)
+        let result = await fetch(`http://127.0.0.1:3000/checkout/${auth._id}`, {
+            method: 'post',
+            body: JSON.stringify({userid:auth._id,ordername:ordername,ordermobilenumber:ordermobilenumber,orderaddress:orderaddress,paymentmethod:paymentmethod,totalamount:totalamount,ordertime:new Date(),orderproducts:cart}),
+            headers: {
+                "Content-Type": "application/json",
+                'authorization': JSON.parse(localStorage.getItem('token'))
+            }
+        })
+        result = await result.json()
+        console.log(result)
     }
     const handleradio = (e) => {
         setpaymentmethod(e.target.value)

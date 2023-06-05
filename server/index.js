@@ -13,6 +13,7 @@ const User = require('./db/User')
 const Product = require('./db/Product')
 const Admin = require('./db/Admin')
 const Cart = require('./db/Cart')
+const Orders = require('./db/Orders')
 
 app.use(express.json())
 app.use(cors())
@@ -276,6 +277,17 @@ app.post('/incquantity/:id',verifytoken,async(req,res)=>{
 app.delete('/removequantity/:id', verifytoken, async (req, res) => {
     const result = await Cart.deleteOne({ _id: req.params.id })
     res.send(result)
+})
+app.post('/checkout/:id',verifytoken,async(req,res)=>{
+    let order = await Orders(req.body)
+    result = await order.save()
+    result = result.toObject()
+    if (result){
+        res.send(result)
+    }
+    else{
+        res.send({result:'no order placed'})
+    }
 })
 
 function verifytoken(req, res, next) {
