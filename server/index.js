@@ -304,6 +304,16 @@ app.post('/addorder/:id', verifytoken, async (req, res) => {
         res.send({ result: 'no order placed' })
     }
 })
+app.get('/orders/:id',verifytoken,async (req,res)=>{
+    let result = await Orders.find({userid:req.params.id})
+    // console.log(result)
+    if (result.length > 0) {
+        res.send(result)
+    }
+    else {
+        res.send({ result: "No orders found", length: 0 })
+    }
+})
 
 function verifytoken(req, res, next) {
     const token = req.headers['authorization']

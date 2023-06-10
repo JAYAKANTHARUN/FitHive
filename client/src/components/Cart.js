@@ -110,8 +110,8 @@ const Cart = () => {
                     <h3>Your cart is Empty</h3>
                 ) : (
                     cart.map((item, index) => (
-                        <div>
-                            <div className="cartitem" key={index}>
+                        <div  key={index}>
+                            <div className="cartitem">
                                 <div>
                                     <img src={item.image} alt="loading" />
                                 </div>
