@@ -49,31 +49,55 @@ const Checkout = () => {
 
     const handleplaceorderandpay = async (e) => {
 
-        e.preventDefault()
+        if (paymentmethod === 'online') {
+            e.preventDefault()
 
-        let order = await fetch(`http://127.0.0.1:3000/checkout/${auth._id}`, {
-            method: 'post',
-            body: JSON.stringify({ userid: auth._id, ordername: ordername, ordermobilenumber: ordermobilenumber, orderaddress: orderaddress, paymentmethod: paymentmethod, totalamount: totalamount, ordertime: new Date(), orderproducts: cart }),
-            headers: {
-                "Content-Type": "application/json",
-                'authorization': JSON.parse(localStorage.getItem('token'))
-            }
-        })
+            let order = await fetch(`http://127.0.0.1:3000/checkout/${auth._id}`, {
+                method: 'post',
+                body: JSON.stringify({ userid: auth._id, ordername: ordername, ordermobilenumber: ordermobilenumber, orderaddress: orderaddress, paymentmethod: paymentmethod, totalamount: totalamount, ordertime: new Date(), orderproducts: cart }),
+                headers: {
+                    "Content-Type": "application/json",
+                    'authorization': JSON.parse(localStorage.getItem('token'))
+                }
+            })
 
-        order = await order.json()
-        console.log(order)
-        
-        const options = {
-            key: 'rzp_test_u8uz7rfj0GVUXE',
-            amount: parseInt(totalamount) * 100,
-            currency: 'INR',
-            order_id: order.id,
-            "handler": function (response) {
-                alert("Payment Successfull");
-            }
-        };
-        const rzp = new window.Razorpay(options);
-        rzp.open();
+            order = await order.json()
+            console.log(order)
+
+            const options = {
+                key: 'rzp_test_u8uz7rfj0GVUXE',
+                amount: parseInt(totalamount) * 100,
+                currency: 'INR',
+                order_id: order.id,
+                "handler": async function (response) {
+                    navigate('/orders')
+
+                    let order = await fetch(`http://127.0.0.1:3000/addorder/${auth._id}`, {
+                        method: 'post',
+                        body: JSON.stringify({ userid: auth._id, ordername: ordername, ordermobilenumber: ordermobilenumber, orderaddress: orderaddress, paymentmethod: paymentmethod, totalamount: totalamount, ordertime: new Date(), orderproducts: cart }),
+                        headers: {
+                            "Content-Type": "application/json",
+                            'authorization': JSON.parse(localStorage.getItem('token'))
+                        }
+                    })
+                    alert("Payment Successfull, Order Placed");
+                }
+            };
+            const rzp = new window.Razorpay(options);
+            rzp.open();
+        }
+        else if (paymentmethod === 'cod') {
+            navigate('/orders')
+            let order = await fetch(`http://127.0.0.1:3000/addorder/${auth._id}`, {
+                method: 'post',
+                body: JSON.stringify({ userid: auth._id, ordername: ordername, ordermobilenumber: ordermobilenumber, orderaddress: orderaddress, paymentmethod: paymentmethod, totalamount: totalamount, ordertime: new Date(), orderproducts: cart }),
+                headers: {
+                    "Content-Type": "application/json",
+                    'authorization': JSON.parse(localStorage.getItem('token'))
+                }
+            })
+            alert("Order Successfully Placed")
+        }
     }
 
     const handleradio = (e) => {

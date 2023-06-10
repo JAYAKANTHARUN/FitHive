@@ -16,6 +16,7 @@ import Details from './components/Details'
 import Cart from './components/Cart'
 import Checkout from './components/Checkout';
 import Privatecheckout from './components/Privatecheckout';
+import Orders from './components/Orders';
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
           <Route element={<Private />}>
             <Route path='/profile' element={<Profile />} />
             <Route path='/cart' element={<Cart />} />
+            <Route path='/orders' element={<Orders />} />
+            
             {/* <Route path='/checkout/:id' element={< Checkout />} /> */}
           </Route>
           <Route element={<Privatecheckout />}>

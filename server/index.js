@@ -293,7 +293,7 @@ app.delete('/removequantity/:id', verifytoken, async (req, res) => {
     const result = await Cart.deleteOne({ _id: req.params.id })
     res.send(result)
 })
-app.post('/checkout/:id', verifytoken, async (req, res) => {
+app.post('/addorder/:id', verifytoken, async (req, res) => {
     let order = await Orders(req.body)
     result = await order.save()
     result = result.toObject()
