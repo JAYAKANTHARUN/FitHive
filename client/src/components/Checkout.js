@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
@@ -36,7 +36,7 @@ const Checkout = () => {
                 settotalamount(sum)
                 setcart(result)
             }
-            else{
+            else {
                 setcart(result)
             }
         }
@@ -45,19 +45,37 @@ const Checkout = () => {
         }
     }
 
-    const handleplaceorderandpay = async() => {
-        // console.log(ordername, ordermobilenumber, orderaddress, paymentmethod, totalamount, new Date(), cart)
-        let result = await fetch(`http://127.0.0.1:3000/checkout/${auth._id}`, {
+
+
+    const handleplaceorderandpay = async (e) => {
+
+        e.preventDefault()
+
+        let order = await fetch(`http://127.0.0.1:3000/checkout/${auth._id}`, {
             method: 'post',
-            body: JSON.stringify({userid:auth._id,ordername:ordername,ordermobilenumber:ordermobilenumber,orderaddress:orderaddress,paymentmethod:paymentmethod,totalamount:totalamount,ordertime:new Date(),orderproducts:cart}),
+            body: JSON.stringify({ userid: auth._id, ordername: ordername, ordermobilenumber: ordermobilenumber, orderaddress: orderaddress, paymentmethod: paymentmethod, totalamount: totalamount, ordertime: new Date(), orderproducts: cart }),
             headers: {
                 "Content-Type": "application/json",
                 'authorization': JSON.parse(localStorage.getItem('token'))
             }
         })
-        result = await result.json()
-        console.log(result)
+
+        order = await order.json()
+        console.log(order)
+        
+        const options = {
+            key: 'rzp_test_u8uz7rfj0GVUXE',
+            amount: parseInt(totalamount) * 100,
+            currency: 'INR',
+            order_id: order.id,
+            "handler": function (response) {
+                alert("Payment Successfull");
+            }
+        };
+        const rzp = new window.Razorpay(options);
+        rzp.open();
     }
+
     const handleradio = (e) => {
         setpaymentmethod(e.target.value)
     }
@@ -80,7 +98,7 @@ const Checkout = () => {
                     <div className="paymentradio">
                         <div className="radio">
                             <label>
-                                <input className="radioinput" type="radio" name="paymentMethod" value="cod" id="cod"     checked={paymentmethod === 'cod'} onChange={handleradio} />
+                                <input className="radioinput" type="radio" name="paymentMethod" value="cod" id="cod" checked={paymentmethod === 'cod'} onChange={handleradio} />
                                 Cash on Delivery (COD)
                             </label>
                         </div>
@@ -94,9 +112,9 @@ const Checkout = () => {
                     </div>
                 </div>
                 <hr />
-                <button onClick={() => { handleplaceorderandpay() }}>Place Order And Pay</button>
+                <button id="rzp-button1" onClick={(e) => handleplaceorderandpay(e)}>Place Order And Pay</button>
             </div>
-        </div> 
+        </div>
 
     )
 }

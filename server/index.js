@@ -1,4 +1,5 @@
 const express = require('express');
+const Razorpay=require('razorpay')
 const app = express();
 const cors = require('cors')
 
@@ -17,6 +18,20 @@ const Orders = require('./db/Orders')
 
 app.use(express.json())
 app.use(cors())
+
+app.post('/checkout/:id', verifytoken ,async (req, res) => {
+
+    let amount = parseInt(req.body.totalamount)
+    
+    var instance = new Razorpay({ key_id: 'rzp_test_u8uz7rfj0GVUXE', key_secret: 'hrB8o6HhGhJxsCgpqSnmtCM7' })
+
+    let order = await instance.orders.create({
+        amount: amount * 100,
+        currency: "INR",
+        receipt: "receipt#1"
+    })
+    res.status(201).json({success:true,order,amount})
+})
 
 app.post('/register', async (req, res) => {
     if (req.body.password && req.body.email && req.body.name) {
