@@ -96,7 +96,7 @@ const Checkout = () => {
                 <hr />
                 <button onClick={() => { handleplaceorderandpay() }}>Place Order And Pay</button>
             </div>
-        </div>
+        </div> 
 
     )
 }

@@ -215,14 +215,14 @@ app.get('/details/:id', async (req, res) => {
         res.send({ result: "no product found" })
     }
 })
-app.post('/userproducts/:id',verifytoken, async (req, res) => {
+app.post('/userproducts/:id', verifytoken, async (req, res) => {
     console.log(req.body)
     let cart = new Cart(req.body)
     let result = await cart.save()
     res.send(result)
 })
-app.get('/cart/:id',verifytoken,async(req,res)=>{
-    let cart = await Cart.find({userid:req.params.id})
+app.get('/cart/:id', verifytoken, async (req, res) => {
+    let cart = await Cart.find({ userid: req.params.id })
     if (cart.length > 0) {
         res.send(cart)
     }
@@ -230,18 +230,18 @@ app.get('/cart/:id',verifytoken,async(req,res)=>{
         res.send({ cart: "No cart found", length: 0 })
     }
 })
-app.get('/changequantity/:id',verifytoken,async(req,res)=>{
-    let result = await Cart.findOne({_id:req.params.id})
+app.get('/changequantity/:id', verifytoken, async (req, res) => {
+    let result = await Cart.findOne({ _id: req.params.id })
     console.log(result)
-    if (result){
+    if (result) {
         res.send(result)
     }
-    else{
-        res.send({result:"no quantity found"})
+    else {
+        res.send({ result: "no quantity found" })
     }
 })
-app.post('/decquantity/:id',verifytoken,async(req,res)=>{
-    let quantity = parseInt(req.body.quantity)-1
+app.post('/decquantity/:id', verifytoken, async (req, res) => {
+    let quantity = parseInt(req.body.quantity) - 1
     let result = await Cart.updateOne(
         { _id: req.params.id },
         {
@@ -250,15 +250,15 @@ app.post('/decquantity/:id',verifytoken,async(req,res)=>{
             }
         }
     )
-    if (result){
+    if (result) {
         res.send(result)
     }
-    else{
-        res.send({result:"no quantity changed"})
+    else {
+        res.send({ result: "no quantity changed" })
     }
 })
-app.post('/incquantity/:id',verifytoken,async(req,res)=>{
-    let quantity = parseInt(req.body.quantity)+1
+app.post('/incquantity/:id', verifytoken, async (req, res) => {
+    let quantity = parseInt(req.body.quantity) + 1
     let result = await Cart.updateOne(
         { _id: req.params.id },
         {
@@ -267,26 +267,26 @@ app.post('/incquantity/:id',verifytoken,async(req,res)=>{
             }
         }
     )
-    if (result){
+    if (result) {
         res.send(result)
     }
-    else{
-        res.send({result:"no quantity changed"})
+    else {
+        res.send({ result: "no quantity changed" })
     }
 })
 app.delete('/removequantity/:id', verifytoken, async (req, res) => {
     const result = await Cart.deleteOne({ _id: req.params.id })
     res.send(result)
 })
-app.post('/checkout/:id',verifytoken,async(req,res)=>{
+app.post('/checkout/:id', verifytoken, async (req, res) => {
     let order = await Orders(req.body)
     result = await order.save()
     result = result.toObject()
-    if (result){
+    if (result) {
         res.send(result)
     }
-    else{
-        res.send({result:'no order placed'})
+    else {
+        res.send({ result: 'no order placed' })
     }
 })
 
