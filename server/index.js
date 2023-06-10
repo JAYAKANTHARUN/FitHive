@@ -314,6 +314,10 @@ app.get('/orders/:id',verifytoken,async (req,res)=>{
         res.send({ result: "No orders found", length: 0 })
     }
 })
+app.delete('/clearcart/:id',verifytoken,async(req,res)=>{
+    let result = await Cart.deleteMany({userid:req.params.id})
+    res.send(result)
+})
 
 function verifytoken(req, res, next) {
     const token = req.headers['authorization']
