@@ -23,14 +23,59 @@ const Checkout = () => {
         fetchKeyId()
     }, [])
 
+    const handlePaymentSuccess = async (response) => {
+        const emailData = {
+            recipientEmail: auth.email,
+            subject: 'Payment Successful',
+            text: 'Thank you for your payment. Your order has been placed successfully.'
+        }
+
+        try {
+            await fetch('http://127.0.0.1:3000/api/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authorization': JSON.parse(localStorage.getItem('token'))
+                },
+                body: JSON.stringify(emailData)
+            })
+        } catch (error) {
+            console.log('Error sending email:', error)
+        }
+    }
+    const handleOrderSuccess = async (response) => {
+        const emailData = {
+            recipientEmail: auth.email,
+            subject: 'Order Placed',
+            text: 'Your order has been placed successfully.'
+        }
+
+        try {
+            await fetch('http://127.0.0.1:3000/api/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authorization': JSON.parse(localStorage.getItem('token'))
+                },
+                body: JSON.stringify(emailData)
+            })
+        } catch (error) {
+            console.log('Error sending email:', error)
+        }
+    }
+
     const fetchKeyId = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:3000/api/keyid');
-            const data = await response.json();
-            setKeyId(data.keyId);
+            const response = await fetch('http://127.0.0.1:3000/api/keyid',{
+                headers: {
+                    'authorization': JSON.parse(localStorage.getItem('token'))
+                }
+            });
+            const data = await response.json()
+            setKeyId(data.keyId)
             console.log(keyId)
         } catch (error) {
-            console.error('Error fetching keyId:', error);
+            console.error('Error fetching keyId:', error)
         }
     }
 
@@ -102,7 +147,9 @@ const Checkout = () => {
                             }
                         })
 
-                        alert("Payment Successfull, Order Placed");
+                        alert("Payment Successfull, Order Placed")
+
+                        handlePaymentSuccess()
                     }
                 };
                 const rzp = new window.Razorpay(options);
@@ -127,6 +174,8 @@ const Checkout = () => {
                 })
 
                 alert("Order Successfully Placed")
+
+                handleOrderSuccess()
             }
         }
         else {

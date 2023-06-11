@@ -1,7 +1,8 @@
 const express = require('express');
-const Razorpay=require('razorpay')
+const Razorpay = require('razorpay')
 const app = express();
 const cors = require('cors')
+const nodemailer = require('nodemailer')
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json({ limit: '10mb' }));
@@ -16,19 +17,51 @@ const Admin = require('./db/Admin')
 const Cart = require('./db/Cart')
 const Orders = require('./db/Orders')
 
-const getKeyId = require('./config/api');
+const getKeyId = require('./config/api')
 
 app.use(express.json())
 app.use(cors())
 
-require('dotenv').config({path:"./config/config.env"});
+require('dotenv').config({ path: "./config/config.env" })
 
-app.get('/api/keyid',getKeyId);
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.USER,
+        pass: process.env.PASS
+    }
+});
 
-app.post('/checkout/:id', verifytoken ,async (req, res) => {
+app.post('/api/send-email', verifytoken, async(req, res) => {
+    const { recipientEmail, subject, text } = req.body
+    const mailOptions = { 
+        from: process.env.USER,
+        to: recipientEmail,
+        subject,
+        text
+    }
+    try {
+        await transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log('Error1 sending email:', error);
+                res.status(500).json({ success: false, message: 'Error sending email' });
+            } else {
+                console.log('Email sent:', info.response);
+                res.json({ success: true, message: 'Email sent successfully' });
+            }
+        })
+    } catch (error) {
+        console.log('Error2 sending email:', error);
+        res.status(500).json({ success: false, message: 'Error sending email' });
+    }
+})
+
+app.get('/api/keyid', verifytoken, getKeyId)
+
+app.post('/checkout/:id', verifytoken, async (req, res) => {
 
     let amount = parseInt(req.body.totalamount)
-    
+
     var instance = new Razorpay({ key_id: process.env.KEY_ID, key_secret: process.env.KEY_SECRET })
 
     let order = await instance.orders.create({
@@ -36,7 +69,7 @@ app.post('/checkout/:id', verifytoken ,async (req, res) => {
         currency: "INR",
         receipt: "receipt#1"
     })
-    res.status(201).json({success:true,order,amount})
+    res.status(201).json({ success: true, order, amount })
 })
 
 app.post('/register', async (req, res) => {
@@ -310,8 +343,8 @@ app.post('/addorder/:id', verifytoken, async (req, res) => {
         res.send({ result: 'no order placed' })
     }
 })
-app.get('/orders/:id',verifytoken,async (req,res)=>{
-    let result = await Orders.find({userid:req.params.id})
+app.get('/orders/:id', verifytoken, async (req, res) => {
+    let result = await Orders.find({ userid: req.params.id })
     // console.log(result)
     if (result.length > 0) {
         res.send(result)
@@ -320,8 +353,8 @@ app.get('/orders/:id',verifytoken,async (req,res)=>{
         res.send({ result: "No orders found", length: 0 })
     }
 })
-app.delete('/clearcart/:id',verifytoken,async(req,res)=>{
-    let result = await Cart.deleteMany({userid:req.params.id})
+app.delete('/clearcart/:id', verifytoken, async (req, res) => {
+    let result = await Cart.deleteMany({ userid: req.params.id })
     res.send(result)
 })
 
