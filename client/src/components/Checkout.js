@@ -16,9 +16,23 @@ const Checkout = () => {
 
     const [totalamount, settotalamount] = useState('')
 
+    const [keyId, setKeyId] = useState('')
+
     useEffect(() => {
         getcart()
+        fetchKeyId()
     }, [])
+
+    const fetchKeyId = async () => {
+        try {
+            const response = await fetch('http://127.0.0.1:3000/api/keyid');
+            const data = await response.json();
+            setKeyId(data.keyId);
+            console.log(keyId)
+        } catch (error) {
+            console.error('Error fetching keyId:', error);
+        }
+    }
 
     const getcart = async () => {
         if (auth) {
@@ -65,7 +79,7 @@ const Checkout = () => {
                 //console.log(order)
 
                 const options = {
-                    key: 'rzp_test_u8uz7rfj0GVUXE',
+                    key: keyId,
                     amount: parseInt(totalamount) * 100,
                     currency: 'INR',
                     order_id: order.id,

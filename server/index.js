@@ -16,14 +16,20 @@ const Admin = require('./db/Admin')
 const Cart = require('./db/Cart')
 const Orders = require('./db/Orders')
 
+const getKeyId = require('./config/api');
+
 app.use(express.json())
 app.use(cors())
+
+require('dotenv').config({path:"./config/config.env"});
+
+app.get('/api/keyid',getKeyId);
 
 app.post('/checkout/:id', verifytoken ,async (req, res) => {
 
     let amount = parseInt(req.body.totalamount)
     
-    var instance = new Razorpay({ key_id: 'rzp_test_u8uz7rfj0GVUXE', key_secret: 'hrB8o6HhGhJxsCgpqSnmtCM7' })
+    var instance = new Razorpay({ key_id: process.env.KEY_ID, key_secret: process.env.KEY_SECRET })
 
     let order = await instance.orders.create({
         amount: amount * 100,
