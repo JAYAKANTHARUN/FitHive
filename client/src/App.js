@@ -17,6 +17,7 @@ import Cart from './components/Cart'
 import Checkout from './components/Checkout';
 import Privatecheckout from './components/Privatecheckout';
 import Orders from './components/Orders';
+import Home from './components/Home';
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
       <BrowserRouter>
         <Nav />
         <Routes>
-          <Route path='/' element={<h1>FitHive</h1>} />
+          <Route path='/' element={<Home />} />
           <Route element={<AdminPrivate />}>
             <Route path='/admin' element={<ProductsList />} />
             <Route path='/add' element={<AddProduct />} />

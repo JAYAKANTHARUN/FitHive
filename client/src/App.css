@@ -4,6 +4,7 @@ body{
   position: relative;
   min-height: 690px;
   padding-bottom: 100px;
+  background-color: #fff9f0;
 }
 
 .navbar{
@@ -64,6 +65,12 @@ body{
 }
 .signup label{
   font-size: 20px;
+  font-family: 'Raleway', sans-serif;
+  color: rgb(170, 113, 62);
+  font-weight: bold;
+}
+.signup a{
+  font-size: 17px;
   font-family: 'Raleway', sans-serif;
   color: rgb(170, 113, 62);
   font-weight: bold;
@@ -358,7 +365,7 @@ table img{
 
 .userproducts{
   display: flex;
-  /* justify-content: center; */
+  justify-content: flex-start;
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
@@ -366,17 +373,18 @@ table img{
 .userproducts > div {
   width: 200px;
   height: 400px;
-  border: 3px solid rgb(225, 210, 194); 
+  border: 3px solid rgb(201, 172, 142); 
   padding: 10px;
-  margin: 20px;
+  margin: 30px;
   text-align: center;
   border-radius: 30px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(252, 202, 127, 0.845);
+  background-color: rgb(252, 240, 226);
   transition: transform 0.5s ease-in-out;
 }
 .userproducts > div:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 15px rgba(255, 198, 112, 0.845);
 }
 .userproducts h3{
   margin: auto;
@@ -389,9 +397,9 @@ table img{
 .userproducts img{
   width: 180px;
   height: 200px;
-  border: 1px solid rgb(225, 210, 194);
   border-radius: 30px;
   text-align: center;
+  mix-blend-mode: multiply;
 }
 .name{
   font-size: 20px ;
@@ -485,6 +493,7 @@ table img{
 .detailimage img{
   width: 600px;
   height: 600px;
+  mix-blend-mode: multiply;
 }
 .brand{
   font-size: 20px;
@@ -738,6 +747,62 @@ table img{
   width: 15px;
   height: 15px;
 }
+.home{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 700px;
+}
+.hometext1{
+  color:rgb(118, 79, 36);
+  font-size: 18px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  padding: 20px;
+}
+.hometext1 span{
+  color:rgb(186, 107, 23);
+  font-size: 50px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+}
+.hometext{
+  color:rgb(118, 79, 36);
+  font-size: 13px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  padding: 30px;
+}
+.homeimagel{
+  height: 550px;
+  width: 750px;
+  border-radius: 50px 0px 50px 0px;
+  margin: 10px;
+  box-shadow: 30px 30px 20px rgb(161, 159, 156);
+}
+.homeimager{
+  height: 550px;
+  width: 750px;
+  border-radius: 50px 0px 50px 0px;
+  margin: 10px;
+  box-shadow: -30px 30px 20px rgb(161, 159, 156);
+}
+hr {
+  border: none;
+  height: 3px;
+  background: linear-gradient(to right, #faecd5, #ffecce, #fde3b9);
+  background-size: 200% 1px;
+  animation: gradientShift 4s infinite;
+}
+@keyframes gradientShift {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
 /* .paymentradio{
   display: block;
   flex-direction: column;
