@@ -9,11 +9,15 @@ const Login=()=>{
     const [password, setpassword] = useState('')
     const navigate=useNavigate()
 
+    const [isVisible, setIsVisible] = useState(false);
+
     useEffect(()=>{
+        setIsVisible(true);
         const auth = localStorage.getItem('user')
         if (auth){
             navigate('/')
         }
+        
     })
 
     const handlelogin=async()=>{
@@ -38,7 +42,7 @@ const Login=()=>{
     }
 
     return(
-        <div className="signup">
+        <div className={`signup ${isVisible ? 'show' : ''}`}>
             <h1>Log In</h1>
             <label>Name</label><br />
             <input type="text" id='name' placeholder='Enter Your Name' value={name} onChange={(e) => { setname(e.target.value) }} /><br /><br />
@@ -46,7 +50,7 @@ const Login=()=>{
             <input type="email" id='email' placeholder='Enter Email' value={email} onChange={(e) => { setemail(e.target.value) }} /><br /><br />
             <label>Password</label><br />
             <input type="password" id='password' placeholder='Enter Password' value={password} onChange={(e) => { setpassword(e.target.value) }} /><br /><br />
-            <a href="/signup">Already have an account ? </a><br />
+            
             <button type='submit' onClick={handlelogin}>Submit</button>
         </div>
     )

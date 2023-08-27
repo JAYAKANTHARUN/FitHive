@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from 'react';
 
 const Home = () => {
     const images = [
@@ -8,9 +9,16 @@ const Home = () => {
         "https://images.pexels.com/photos/1640768/pexels-photo-1640768.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "https://images.pexels.com/photos/3764011/pexels-photo-3764011.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     ];
+
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        setIsVisible(true);
+    }, []);
+
     return (
         <div>
-            <div className="home">
+            <div className={`home ${isVisible ? 'show' : ''}`}>
                 <div className="hometext1">
                     <h1>Welcome to <span>Fithive</span>,<br /> your ultimate destination for fitness, wellness, and healthy living</h1>
                 </div>
@@ -23,7 +31,7 @@ const Home = () => {
                 </div>
             </div>
             <hr />
-            <div className="home">
+            <div className={`home ${isVisible ? 'show' : ''}`}>
                 
                 <div className="images">
                     <img
@@ -37,7 +45,7 @@ const Home = () => {
                 </div>
             </div>
             <hr />
-            <div className="home">
+            <div className={`home ${isVisible ? 'show' : ''}`}>
                 <div className="hometext">
                     <h1>Elevate your fitness game with us. We offer expert guidance, motivational resources, and a variety of tools to help you achieve your health goals</h1>
                 </div>
@@ -50,7 +58,7 @@ const Home = () => {
                 </div>
             </div>
             <hr />
-            <div className="home">
+            <div className={`home ${isVisible ? 'show' : ''}`}>
                 
                 <div className="images">
                     <img
@@ -64,7 +72,7 @@ const Home = () => {
                 </div>
             </div>
             <hr />
-            <div className="home">
+            <div className={`home ${isVisible ? 'show' : ''}`}>
                 <div className="hometext">
                     <h1>Join our vibrant community of health enthusiasts. Connect, learn, and grow as you embark on a path of self-improvement and holistic wellness</h1>
                 </div>

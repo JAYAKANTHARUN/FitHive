@@ -189,19 +189,20 @@ const Checkout = () => {
 
     return (
         <div className="checkoutpage">
-            <p>Checkout</p>
+            
             <div className="checkout">
-                <label>Name : </label>
+                <p>Checkout</p>
+                <label>Name</label><br />
                 <input className="checkoutinput" type="text" id='ordername' value={ordername} onChange={(e) => { setordername(e.target.value) }} /><br />
-                <label>Mobile no : </label>
+                <label>Mobile no</label><br />
                 <input className="checkoutinput" type="text" id='ordermobilenumber' value={ordermobilenumber} onChange={(e) => { setordermobilenumber(e.target.value) }} /><br />
-                <label>Address : </label>
+                <label>Address</label><br />
                 <input className="checkoutinput" type="text" id='orderaddress' value={orderaddress} onChange={(e) => { setorderaddress(e.target.value) }} /><br />
                 <br />
                 <hr />
                 <br />
                 <div className="paymentmethod">
-                    <h3>Payment Method</h3><br />
+                    <h3>Payment Method</h3>
                     <div className="paymentradio">
                         <div className="radio">
                             <label>
@@ -215,7 +216,6 @@ const Checkout = () => {
                                 Online Payment
                             </label>
                         </div>
-                        <br />
                     </div>
                 </div>
                 <hr />

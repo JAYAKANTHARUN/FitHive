@@ -11,8 +11,11 @@ const UserProducts = () => {
     const [products, setproducts] = useState([])
     const auth = JSON.parse(localStorage.getItem('user'))
 
+    const [isVisible, setIsVisible] = useState(false);
+
     useEffect(() => {
-        getproducts()
+        getproducts();
+        setIsVisible(true);
     }, [])
 
     const getproducts = async () => {
@@ -30,7 +33,7 @@ const UserProducts = () => {
     // };
 
     return (
-        <div className="userproducts">
+        <div className={`userproducts ${isVisible ? 'show' : ''}`}>
             {products.length === 0 ? (
                 <h3>No Products Found</h3>
             ) : (
