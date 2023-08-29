@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
+import { ClipLoader } from "react-spinners";
+
 const UserProducts = () => {
 
     const navigate = useNavigate()
@@ -13,6 +15,8 @@ const UserProducts = () => {
 
     const [isVisible, setIsVisible] = useState(false);
 
+    const [isLoading, setIsLoading] = useState(true);
+
     useEffect(() => {
         getproducts();
         setIsVisible(true);
@@ -22,6 +26,7 @@ const UserProducts = () => {
         let result = await fetch('http://127.0.0.1:3000/userproducts')
         result = await result.json()
         setproducts(result)
+        setIsLoading(false)
     }
     const gotodetails = (id) => {
         navigate(`/details/${id}`)
@@ -34,7 +39,13 @@ const UserProducts = () => {
 
     return (
         <div className={`userproducts ${isVisible ? 'show' : ''}`}>
-            {products.length === 0 ? (
+            {isLoading ? (
+                <div className="loading">
+                    <div className="loadingspinner">
+                        <ClipLoader size={80} color={"#db6401"} loading={isLoading} />
+                    </div>
+                </div>
+            ) : products.length === 0 ? (
                 <h3>No Products Found</h3>
             ) : (
                 products.map((item, index) => (
@@ -51,7 +62,7 @@ const UserProducts = () => {
                                 <span
                                     key={index}
                                     className={index < parseFloat(item.star) ? 'star filled' : 'star'}
-                                    // onClick={() => handleStarClick(index)}
+                                // onClick={() => handleStarClick(index)}
                                 >
                                     &#9733;
                                 </span>

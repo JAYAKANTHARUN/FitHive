@@ -6,7 +6,14 @@ body {
   padding-bottom: 200px;
   background-color: #fff9f0;
 }
-
+.loading{
+  margin-top: 220px;
+  margin-left: 720px;
+}
+.searchloading{
+  margin-top: 100px;
+  margin-left: 0px;
+}
 .navbar {
   background-color: rgb(226, 206, 182);
   margin-top: 0px;
@@ -479,7 +486,7 @@ table img {
   transform: translateY(0);
 }
 
-.userproducts>div {
+.product {
   width: 200px;
   height: 400px;
   border: 3px solid rgb(201, 172, 142);
@@ -492,7 +499,7 @@ table img {
   transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
 }
 
-.userproducts>div:hover {
+.product:hover {
   transform: scale(1.05);
   box-shadow: 0 0 20px rgb(133, 133, 133);
 }
@@ -1038,6 +1045,7 @@ hr {
     background-position: -100% 0;
   }
 }
+
 
 /* .paymentradio{
   display: block;

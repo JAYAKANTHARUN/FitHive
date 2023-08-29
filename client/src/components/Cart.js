@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { ClipLoader } from "react-spinners";
+
 const Cart = () => {
 
     const navigate = useNavigate()
@@ -10,6 +12,8 @@ const Cart = () => {
     const [cart, setcart] = useState([])
 
     const [totalamount, settotalamount] = useState('')
+
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         getcart()
@@ -30,9 +34,11 @@ const Cart = () => {
                 ))
                 settotalamount(sum)
                 setcart(result)
+                setIsLoading(false)
             }
-            else{
+            else {
                 setcart(result)
+                setIsLoading(false)
             }
         }
         else {
@@ -41,6 +47,7 @@ const Cart = () => {
     }
 
     const decquantity = async (cartid) => {
+        setIsLoading(true)
         let result = await fetch(`http://127.0.0.1:3000/changequantity/${cartid}`, {
             headers: {
                 'authorization': JSON.parse(localStorage.getItem('token'))
@@ -71,6 +78,7 @@ const Cart = () => {
         }
     }
     const incquantity = async (cartid) => {
+        setIsLoading(true)
         let result = await fetch(`http://127.0.0.1:3000/changequantity/${cartid}`, {
             headers: {
                 'authorization': JSON.parse(localStorage.getItem('token'))
@@ -89,6 +97,7 @@ const Cart = () => {
         getcart()
     }
     const remove = async (cartid) => {
+        setIsLoading(true)
         let result = await fetch(`http://127.0.0.1:3000/removequantity/${cartid}`, {
             method: 'delete',
             headers: {
@@ -103,56 +112,66 @@ const Cart = () => {
     }
 
     return (
-        <div className="cartpage">
-            <h1>Cart</h1>
-            <div className="cart">
-                {cart.length === 0 ? (
-                    <h3>Your cart is Empty</h3>
-                ) : (
-                    cart.map((item, index) => (
-                        <div  key={index}>
-                            <div className="cartitem">
-                                <div>
-                                    <img src={item.image} alt="loading" />
+        <div>
+            {isLoading ? (
+                <div className="loading">
+                    <div className="loadingspinner">
+                        <ClipLoader size={80} color={"#db6401"} loading={isLoading} />
+                    </div>
+                </div>
+            ) : (
+                <div className="cartpage">
+                    <h1>Cart</h1>
+                    <div className="cart">
+                        {cart.length === 0 ? (
+                            <h3>Your cart is Empty</h3>
+                        ) : (
+                            cart.map((item, index) => (
+                                <div key={index}>
+                                    <div className="cartitem">
+                                        <div>
+                                            <img src={item.image} alt="loading" />
+                                        </div>
+                                        <div>
+                                            <p>Item - {item.name}</p>
+                                        </div>
+                                        <div>
+                                            <p>Company - {item.company}</p>
+                                        </div>
+                                        <div>
+                                            <p>Category - {item.category}</p>
+                                        </div>
+                                        <div>
+                                            <p>Price - ₹{item.price} x {item.quantity}</p>
+                                        </div>
+                                        <div className="incdec">
+                                            <button className="quantity" onClick={() => { decquantity(item._id) }}> - </button><span> {item.quantity} </span><button className="quantity" onClick={() => { incquantity(item._id) }}> + </button>
+                                        </div>
+                                        <div>
+                                            <button className="remove" onClick={() => { remove(item._id) }}> Remove Item </button>
+                                        </div>
+                                    </div>
+                                    <hr />
                                 </div>
-                                <div>
-                                    <p>Item - {item.name}</p>
-                                </div>
-                                <div>
-                                    <p>Company - {item.company}</p>
-                                </div>
-                                <div>
-                                    <p>Category - {item.category}</p>
-                                </div>
-                                <div>
-                                    <p>Price - ₹{item.price} x {item.quantity}</p>
-                                </div>
-                                <div className="incdec">
-                                    <button className="quantity" onClick={() => { decquantity(item._id) }}> - </button><span> {item.quantity} </span><button className="quantity" onClick={() => { incquantity(item._id) }}> + </button>
-                                </div>
-                                <div>
-                                    <button className="remove" onClick={() => { remove(item._id) }}> Remove Item </button>
-                                </div>
+                            ))
+                        )}
+                    </div>
+                    {cart.length === 0 ? (
+                        <h3></h3>
+                    ) : (
+                        <>
+                            <div className="totalamount">
+                                <p>Total Payable Amount: ₹{totalamount}</p>
                             </div>
                             <hr />
-                        </div>
-                    ))
-                )}
-            </div>
-            {cart.length === 0 ? (
-                <h3></h3>
-            ) : (
-                <>
-                    <div className="totalamount">
-                        <p>Total Payable Amount: ₹{totalamount}</p>
-                    </div>
-                    <hr />
-                    <button className="proceed" onClick={() => handleproceedcheckout(auth._id)}>
-                        Proceed to Checkout
-                    </button>
-                </>
-            )}
+                            <button className="proceed" onClick={() => handleproceedcheckout(auth._id)}>
+                                Proceed to Checkout
+                            </button>
+                        </>
+                    )}
 
+                </div>
+            )}
         </div>
     )
 }
