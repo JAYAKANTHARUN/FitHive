@@ -3,7 +3,7 @@
 body {
   position: relative;
   min-height: 690px;
-  padding-bottom: 100px;
+  padding-bottom: 200px;
   background-color: #fff9f0;
 }
 
@@ -47,13 +47,52 @@ body {
   bottom: 0;
   width: 100%;
   background-color: rgb(226, 206, 182);
-  padding-top: 10px;
-  padding-bottom: 10px;
-  color: rgb(165, 108, 42);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* color: rgb(165, 108, 42);
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
   text-align: center;
-  font-size: 12px;
+  font-size: 12px; */
+}
+.footertext{
+  color: rgb(56, 30, 0);
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  margin: 10px;
+}
+.footertext > div{
+  margin-top: -10px;
+  margin-bottom: -10px;
+}
+.footertext img{
+  height: 15px;
+  width: 15px;
+}
+.copyright{
+  display: flex;
+  align-items: center;
+}
+.contactemail{
+  display: flex;
+  align-items: center;
+}
+.contactphone{
+  display: flex;
+  align-items: center;
+}
+.footericons{
+  margin: 10px;
+}
+.footericons img{
+  height: 50px;
+  width: 50px;
+  transition: transform 0.5s ease;
+}
+.footericons img:hover{
+  transform : scale(1.2)
 }
 
 .signup {
@@ -455,7 +494,7 @@ table img {
 
 .userproducts>div:hover {
   transform: scale(1.05);
-  box-shadow: 5px 5px 15px rgba(255, 198, 112, 0.845);
+  box-shadow: 0 0 20px rgb(133, 133, 133);
 }
 
 .userproducts h3 {
@@ -817,6 +856,7 @@ table img {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 50px;
 }
 
 .checkout {
@@ -824,7 +864,7 @@ table img {
   background-color: white;
   padding: 20px;
   border-radius: 50px;
-  box-shadow: 20px 20px 15px rgba(255, 227, 178, 0.948);
+  box-shadow: 0 0 50px rgb(200, 200, 200);
 }
 
 .checkoutpage p {
@@ -910,7 +950,7 @@ table img {
   height: 15px;
 }
 
-.home {
+.home1 {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -921,7 +961,23 @@ table img {
   transition: opacity 1s ease, transform 1s ease;
 }
 
-.home.show {
+.home1.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.home2 {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 700px;
+  background-color: #ffefd8;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.home2.show {
   opacity: 1;
   transform: translateY(0);
 }
