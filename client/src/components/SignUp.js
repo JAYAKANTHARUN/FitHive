@@ -68,7 +68,7 @@ const SignUp = () => {
                     <input type="email" id='email' placeholder='Enter Email' value={email} onChange={(e) => { setemail(e.target.value) }} /><br /><br />
                     <label>Password</label><br />
                     <input type="password" id='password' placeholder='Enter Password' value={password} onChange={(e) => { setpassword(e.target.value) }} /><br /><br />
-                    <a href="/signup">Already have an account ? </a><br />
+                    <a href="/login">Already have an account ? </a><br />
                     <button type='submit' onClick={collectdata}>Submit</button>
                 </div>
             )}
