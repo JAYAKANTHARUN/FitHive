@@ -3,6 +3,8 @@
 
 This project is a full-stack ecommerce website built using the MERN (MongoDB, Express.js, React.js, Node.js) stack, with the addition of JSON Web Tokens (JWT) for authentication. It provides a platform for selling sports-related products and accessories online, ensuring secure user access and personalized shopping experiences.
 
+##Visit website - https://fithive.vercel.app/
+
 ## Key Features:
 
 - User registration and authentication using JWT for secure login and access control.
