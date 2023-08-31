@@ -14,6 +14,7 @@ This project is a full-stack ecommerce website built using the MERN (MongoDB, Ex
 - Integration of a secure payment gateway for seamless online transactions.
 - User reviews and ratings for products, enabling customers to share their feedback.
 - Admin dashboard for managing inventory, orders, and customer inquiries.
+- Responsive design for optimal user experience across devices.
 
 ## Technologies Used:
 
