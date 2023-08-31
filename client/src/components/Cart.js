@@ -148,7 +148,7 @@ const Cart = () => {
                                             <button className="quantity" onClick={() => { decquantity(item._id) }}> - </button><span> {item.quantity} </span><button className="quantity" onClick={() => { incquantity(item._id) }}> + </button>
                                         </div>
                                         <div>
-                                            <button className="remove" onClick={() => { remove(item._id) }}> Remove Item </button>
+                                            <button className="remove" onClick={() => { remove(item._id) }}> Remove </button>
                                         </div>
                                     </div>
                                     <hr />

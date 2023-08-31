@@ -40,8 +40,8 @@ const UserProducts = () => {
     return (
         <div className={`userproducts ${isVisible ? 'show' : ''}`}>
             {isLoading ? (
-                <div className="loading">
-                    <div className="loadingspinner">
+                <div className="productsloading">
+                    <div className="productsloadingspinner">
                         <ClipLoader size={80} color={"#db6401"} loading={isLoading} />
                     </div>
                 </div>

@@ -88,7 +88,9 @@ const Details = () => {
                             <img className="productimage" src={image} alt="loading" />
                         </div>
                         <div className="detailspara">
-                            <p className="brand">Brand - {company}</p>
+                            <div>
+                                <p className="brand">Brand - {company}</p>
+                            </div>
                             <div className="rating">
                                 {star}.0 - {[...Array(5)].map((_, index) => (
                                     <span

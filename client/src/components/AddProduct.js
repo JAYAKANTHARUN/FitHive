@@ -67,24 +67,24 @@ const AddProduct=()=>{
             ) : (
                 <div className="addproduct">
                 <h1>Add Product</h1>
-                <label>Name : </label>
+                <label>Name : </label><br />
                 <input type="text" id='name' value={name} onChange={(e) => { setname(e.target.value) }} /><br />
-                <label>Price : </label>
+                <label>Price : </label><br />
                 <input type="text" id='price' value={price} onChange={(e) => { setprice(e.target.value) }} /><br />
-                <label>Category : </label>
+                <label>Category : </label><br />
                 <input type="text" id='category' value={category} onChange={(e) => { setcategory(e.target.value) }} /><br />
-                <label>Company : </label>
+                <label>Company : </label><br />
                 <input type="text" id='company' value={company} onChange={(e) => { setcompany(e.target.value) }} /><br />
-                <label>Star : </label>
+                <label>Star : </label><br />
                 <input type="text" id='star' value={star} onChange={(e) => { setstar(e.target.value) }} /><br />
-                <label>Rating : </label>
+                <label>Rating : </label><br />
                 <input type="text" id='rating' value={rating} onChange={(e) => { setrating(e.target.value) }} /><br />
-                <label>Discount : </label>
+                <label>Discount : </label><br />
                 <input type="text" id='discount' value={discount} onChange={(e) => { setdiscount(e.target.value) }} /><br />
-                <label>About : </label>
+                <label>About : </label><br />
                 <input type="text" id='about' value={about} onChange={(e) => { setabout(e.target.value) }} /><br />
-                <label>Image : </label>
-                <input type="file" accept="image/*" onChange={converttobase64} />
+                <label>Image : </label><br />
+                <input type="file" accept="image/*" onChange={converttobase64} /><br />
                 {image === "" || image === null ? "" : <img src={image} alt="loading" />} <br />
                 <button type='submit' onClick={addproduct}>Add</button>
             </div>
