@@ -30,9 +30,7 @@ const Home = () => {
                     />
                 </div>
             </div>
-            <hr />
             <div className={`home2 ${isVisible ? 'show' : ''}`}>
-                
                 <div className="images">
                     <img
                         src={images[1]}
@@ -44,7 +42,6 @@ const Home = () => {
                     <h1>Embark on a transformative journey with FitHive. Discover the power of balanced nutrition, effective workouts, and a supportive community</h1>
                 </div>
             </div>
-            <hr />
             <div className={`home1 ${isVisible ? 'show' : ''}`}>
                 <div className="hometext">
                     <h1>Elevate your fitness game with us. We offer expert guidance, motivational resources, and a variety of tools to help you achieve your health goals</h1>
@@ -57,9 +54,7 @@ const Home = () => {
                     />
                 </div>
             </div>
-            <hr />
             <div className={`home2 ${isVisible ? 'show' : ''}`}>
-                
                 <div className="images">
                     <img
                         src={images[3]}
@@ -71,7 +66,6 @@ const Home = () => {
                     <h1>Unlock your potential with our comprehensive wellness platform. From nutrition tips to workout plans, we're here to guide you every step of the way</h1>
                 </div>
             </div>
-            <hr />
             <div className={`home1 ${isVisible ? 'show' : ''}`}>
                 <div className="hometext">
                     <h1>Join our vibrant community of health enthusiasts. Connect, learn, and grow as you embark on a path of self-improvement and holistic wellness</h1>

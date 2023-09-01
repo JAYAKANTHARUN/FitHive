@@ -25,7 +25,7 @@ body {
 .navbar {
   background-color: rgb(226, 206, 182);
   margin-top: 0px;
-
+  margin-left: -30px;
 }
 
 .navbar li {
