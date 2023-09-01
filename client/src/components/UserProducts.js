@@ -22,8 +22,12 @@ const UserProducts = () => {
         setIsVisible(true);
     }, [])
 
+    require('dotenv').config({ path: "./config/config.env" })
+    const password=process.env.MONGOPASSWORD;
+
     const getproducts = async () => {
-        let result = await fetch('http://127.0.0.1:3000/userproducts')
+        // let result = await fetch('http://127.0.0.1:3000/userproducts')
+        let result = await fetch(`mongodb+srv://jayakantharun03:${password}@cluster0.txiaeb6.mongodb.net/`)
         result = await result.json()
         setproducts(result)
         setIsLoading(false)
