@@ -129,7 +129,7 @@ const Checkout = () => {
                     currency: 'INR',
                     order_id: order.id,
                     "handler": async function (response) {
-                        navigate('/orders')
+                        // navigate('/orders')
 
                         let order = await fetch(`https://fithive.onrender.com/addorder/${auth._id}`, {
                             method: 'post',
@@ -139,14 +139,14 @@ const Checkout = () => {
                                 'authorization': JSON.parse(localStorage.getItem('token'))
                             }
                         })
-
+                        navigate('/orders')
                         let clear = await fetch(`https://fithive.onrender.com/clearcart/${auth._id}`, {
                             method: 'delete',
                             headers: {
                                 'authorization': JSON.parse(localStorage.getItem('token'))
                             }
                         })
-
+                                        
                         alert("Payment Successfull, Order Placed")
 
                         handlePaymentSuccess()
@@ -156,7 +156,7 @@ const Checkout = () => {
                 rzp.open();
             }
             else if (paymentmethod === 'cod') {
-                navigate('/orders')
+                // navigate('/orders')
                 let order = await fetch(`https://fithive.onrender.com/addorder/${auth._id}`, {
                     method: 'post',
                     body: JSON.stringify({ userid: auth._id, ordername: ordername, ordermobilenumber: ordermobilenumber, orderaddress: orderaddress, paymentmethod: paymentmethod, totalamount: totalamount, ordertime: new Date(), orderproducts: cart }),
@@ -165,14 +165,14 @@ const Checkout = () => {
                         'authorization': JSON.parse(localStorage.getItem('token'))
                     }
                 })
-
+                navigate('/orders')
                 let clear = await fetch(`https://fithive.onrender.com/clearcart/${auth._id}`, {
                     method: 'delete',
                     headers: {
                         'authorization': JSON.parse(localStorage.getItem('token'))
                     }
                 })
-
+                
                 alert("Order Successfully Placed")
 
                 handleOrderSuccess()
