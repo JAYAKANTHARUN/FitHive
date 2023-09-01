@@ -28,7 +28,7 @@ const Details = () => {
     }, [star])
 
     const getdetails = async () => {
-        let result = await fetch(`http://127.0.0.1:3000/details/${params.id}`)
+        let result = await fetch(`https://fithive.onrender.com/details/${params.id}`)
         result = await result.json()
         setname(result.name)
         setprice(result.price)
@@ -52,7 +52,7 @@ const Details = () => {
         if (auth) {
             setIsLoading(true)
             let userid = auth._id
-            let result = await fetch(`http://127.0.0.1:3000/userproducts/${id}`, {
+            let result = await fetch(`https://fithive.onrender.com/userproducts/${id}`, {
                 method: 'post',
                 body: JSON.stringify({ userid: userid, productid: id, name: name, company: company, category: category, price: price, image: image, quantity: quantity }),
                 headers: {

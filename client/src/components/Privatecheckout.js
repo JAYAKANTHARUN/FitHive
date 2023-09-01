@@ -16,7 +16,7 @@ const Privatecheckout=()=>{
 
     const getcart = async () => {
         if (auth) {
-            let result = await fetch(`http://127.0.0.1:3000/cart/${auth._id}`, {
+            let result = await fetch(`https://fithive.onrender.com/cart/${auth._id}`, {
                 headers: {
                     'authorization': JSON.parse(localStorage.getItem('token'))
                 }

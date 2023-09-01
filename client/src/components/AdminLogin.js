@@ -14,7 +14,7 @@ const AdminLogin = () => {
 
     const handleadminlogin = async () => {
         setIsLoading(true)
-        let result = await fetch('http://127.0.0.1:3000/adminlogin', {
+        let result = await fetch('https://fithive.onrender.com/adminlogin', {
             method: 'post',
             body: JSON.stringify({ username, password }),
             headers: {

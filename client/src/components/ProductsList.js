@@ -19,7 +19,7 @@ const Products = () => {
 
     const getproducts = async () => {
         setIsSearchLoading(true)
-        let result = await fetch('http://127.0.0.1:3000/admin', {
+        let result = await fetch('https://fithive.onrender.com/admin', {
             headers: {
                 'authorization': JSON.parse(localStorage.getItem('token'))
             }
@@ -36,7 +36,7 @@ const Products = () => {
     const deleteproduct = async (id) => {
         setIsLoading(true)
         if (window.confirm("Are You Sure?")) {
-            let result = await fetch(`http://localhost:3000/admin/${id}`, {
+            let result = await fetch(`https://fithive.onrender.com/admin/${id}`, {
                 method: 'delete',
                 headers: {
                     'authorization': JSON.parse(localStorage.getItem('token'))
@@ -60,7 +60,7 @@ const Products = () => {
         setIsSearchLoading(true)
         let key = event.target.value
         if (key) {
-            let result = await fetch(`http://127.0.0.1:3000/search/${key}`, {
+            let result = await fetch(`https://fithive.onrender.com/search/${key}`, {
                 headers: {
                     'authorization': JSON.parse(localStorage.getItem('token'))
                 }

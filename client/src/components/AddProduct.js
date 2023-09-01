@@ -24,7 +24,7 @@ const AddProduct=()=>{
         
         //const userid=JSON.parse(localStorage.getItem('user'))._id
 
-        let result = await fetch('http://127.0.0.1:3000/add',{
+        let result = await fetch('https://fithive.onrender.com/add',{
             method:'post',
             body:JSON.stringify({name,price,category,company,image,star,rating,discount,about}),
             headers:{

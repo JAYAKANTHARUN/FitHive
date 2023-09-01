@@ -31,7 +31,7 @@ const Checkout = () => {
         }
 
         try {
-            await fetch('http://127.0.0.1:3000/api/send-email', {
+            await fetch('https://fithive.onrender.com/api/send-email', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ const Checkout = () => {
         }
 
         try {
-            await fetch('http://127.0.0.1:3000/api/send-email', {
+            await fetch('https://fithive.onrender.com/api/send-email', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ const Checkout = () => {
 
     const fetchKeyId = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:3000/api/keyid',{
+            const response = await fetch('https://fithive.onrender.com/api/keyid',{
                 headers: {
                     'authorization': JSON.parse(localStorage.getItem('token'))
                 }
@@ -81,7 +81,7 @@ const Checkout = () => {
 
     const getcart = async () => {
         if (auth) {
-            let result = await fetch(`http://127.0.0.1:3000/cart/${auth._id}`, {
+            let result = await fetch(`https://fithive.onrender.com/cart/${auth._id}`, {
                 headers: {
                     'authorization': JSON.parse(localStorage.getItem('token'))
                 }
@@ -111,7 +111,7 @@ const Checkout = () => {
             if (paymentmethod === 'online') {
                 e.preventDefault()
 
-                let order = await fetch(`http://127.0.0.1:3000/checkout/${auth._id}`, {
+                let order = await fetch(`https://fithive.onrender.com/checkout/${auth._id}`, {
                     method: 'post',
                     body: JSON.stringify({ userid: auth._id, ordername: ordername, ordermobilenumber: ordermobilenumber, orderaddress: orderaddress, paymentmethod: paymentmethod, totalamount: totalamount, ordertime: new Date(), orderproducts: cart }),
                     headers: {
@@ -131,7 +131,7 @@ const Checkout = () => {
                     "handler": async function (response) {
                         navigate('/orders')
 
-                        let order = await fetch(`http://127.0.0.1:3000/addorder/${auth._id}`, {
+                        let order = await fetch(`https://fithive.onrender.com/addorder/${auth._id}`, {
                             method: 'post',
                             body: JSON.stringify({ userid: auth._id, ordername: ordername, ordermobilenumber: ordermobilenumber, orderaddress: orderaddress, paymentmethod: paymentmethod, totalamount: totalamount, ordertime: new Date(), orderproducts: cart }),
                             headers: {
@@ -140,7 +140,7 @@ const Checkout = () => {
                             }
                         })
 
-                        let clear = await fetch(`http://127.0.0.1:3000/clearcart/${auth._id}`, {
+                        let clear = await fetch(`https://fithive.onrender.com/clearcart/${auth._id}`, {
                             method: 'delete',
                             headers: {
                                 'authorization': JSON.parse(localStorage.getItem('token'))
@@ -157,7 +157,7 @@ const Checkout = () => {
             }
             else if (paymentmethod === 'cod') {
                 navigate('/orders')
-                let order = await fetch(`http://127.0.0.1:3000/addorder/${auth._id}`, {
+                let order = await fetch(`https://fithive.onrender.com/addorder/${auth._id}`, {
                     method: 'post',
                     body: JSON.stringify({ userid: auth._id, ordername: ordername, ordermobilenumber: ordermobilenumber, orderaddress: orderaddress, paymentmethod: paymentmethod, totalamount: totalamount, ordertime: new Date(), orderproducts: cart }),
                     headers: {
@@ -166,7 +166,7 @@ const Checkout = () => {
                     }
                 })
 
-                let clear = await fetch(`http://127.0.0.1:3000/clearcart/${auth._id}`, {
+                let clear = await fetch(`https://fithive.onrender.com/clearcart/${auth._id}`, {
                     method: 'delete',
                     headers: {
                         'authorization': JSON.parse(localStorage.getItem('token'))

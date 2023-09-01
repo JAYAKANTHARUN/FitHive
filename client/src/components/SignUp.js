@@ -26,7 +26,7 @@ const SignUp = () => {
     const collectdata = async () => {
         setIsLoading(true)
         console.log(name, email, password)
-        let result = await fetch('http://127.0.0.1:3000/register', {
+        let result = await fetch('https://fithive.onrender.com/register', {
             method: 'post',
             body: JSON.stringify({ name, email, password }),
             headers: {
