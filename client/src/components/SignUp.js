@@ -60,16 +60,18 @@ const SignUp = () => {
                     </div>
                 </div>
             ) : (
-                <div className={`signup ${isVisible ? 'show' : ''}`}>
-                    <h1>Sign Up</h1>
-                    <label>Name</label><br />
-                    <input type="text" id='name' placeholder='Enter Your Name' value={name} onChange={(e) => { setname(e.target.value) }} /><br /><br />
-                    <label>Email</label><br />
-                    <input type="email" id='email' placeholder='Enter Email' value={email} onChange={(e) => { setemail(e.target.value) }} /><br /><br />
-                    <label>Password</label><br />
-                    <input type="password" id='password' placeholder='Enter Password' value={password} onChange={(e) => { setpassword(e.target.value) }} /><br /><br />
-                    <a href="/login">Already have an account ? </a><br />
-                    <button type='submit' onClick={collectdata}>Submit</button>
+                <div className='signuppage'>
+                    <div className={`signup ${isVisible ? 'show' : ''}`}>
+                        <h1>Sign Up</h1>
+                        <label>Name</label><br />
+                        <input type="text" id='name' placeholder='Enter Your Name' value={name} onChange={(e) => { setname(e.target.value) }} /><br /><br />
+                        <label>Email</label><br />
+                        <input type="email" id='email' placeholder='Enter Email' value={email} onChange={(e) => { setemail(e.target.value) }} /><br /><br />
+                        <label>Password</label><br />
+                        <input type="password" id='password' placeholder='Enter Password' value={password} onChange={(e) => { setpassword(e.target.value) }} /><br /><br />
+                        <a href="/login">Already have an account ? </a><br />
+                        <button type='submit' onClick={collectdata}>Submit</button>
+                    </div>
                 </div>
             )}
         </div>

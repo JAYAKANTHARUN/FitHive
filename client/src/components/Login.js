@@ -57,15 +57,17 @@ const Login = () => {
                     </div>
                 </div>
             ) : (
-                <div className={`signup ${isVisible ? 'show' : ''}`}>
-                    <h1>Log In</h1>
-                    <label>Name</label><br />
-                    <input type="text" id='name' placeholder='Enter Your Name' value={name} onChange={(e) => { setname(e.target.value) }} /><br /><br />
-                    <label>Email</label><br />
-                    <input type="email" id='email' placeholder='Enter Email' value={email} onChange={(e) => { setemail(e.target.value) }} /><br /><br />
-                    <label>Password</label><br />
-                    <input type="password" id='password' placeholder='Enter Password' value={password} onChange={(e) => { setpassword(e.target.value) }} /><br /><br />
-                    <button type='submit' onClick={handlelogin}>Submit</button>
+                <div className="signuppage">
+                    <div className={`signup ${isVisible ? 'show' : ''}`}>
+                        <h1>Log In</h1>
+                        <label>Name</label><br />
+                        <input type="text" id='name' placeholder='Enter Your Name' value={name} onChange={(e) => { setname(e.target.value) }} /><br /><br />
+                        <label>Email</label><br />
+                        <input type="email" id='email' placeholder='Enter Email' value={email} onChange={(e) => { setemail(e.target.value) }} /><br /><br />
+                        <label>Password</label><br />
+                        <input type="password" id='password' placeholder='Enter Password' value={password} onChange={(e) => { setpassword(e.target.value) }} /><br /><br />
+                        <button type='submit' onClick={handlelogin}>Submit</button>
+                    </div>
                 </div>
             )}
         </div>

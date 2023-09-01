@@ -11,10 +11,12 @@ body {
   margin-top: 220px;
   margin-left: 720px;
 }
-.productsloading{
+
+.productsloading {
   margin-top: 220px;
   margin-left: 720px;
 }
+
 .searchloading {
   margin-top: 100px;
   margin-left: 0px;
@@ -117,9 +119,21 @@ body {
   transform: scale(1.2)
 }
 
-.signup {
+.signuppage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 50px;
+}
+
+.signup {
+  margin: 10px;
   text-align: center;
+
+  background-color: white;
+  padding: 50px;
+  border-radius: 50px;
+  box-shadow: 0 0 50px rgb(200, 200, 200);
 
   opacity: 0;
   /* transform: translateY(20px); */
@@ -132,11 +146,11 @@ body {
 }
 
 .signup h1 {
-  font-size: 40px;
+  font-size: 30px;
   color: rgb(159, 75, 15);
   font-weight: bolder;
   font-family: 'Raleway', sans-serif;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .signup label {
@@ -214,7 +228,7 @@ body {
   font-size: 20px;
   font-family: 'Raleway', sans-serif;
   color: rgb(170, 113, 62);
-  font-weight: bold;  
+  font-weight: bold;
 }
 
 .addproduct input {
@@ -1061,34 +1075,36 @@ hr {
   }
 }
 
-@media only screen and (max-width:600px){
+@media only screen and (max-width:600px) {
   body {
     position: relative;
     min-height: 690px;
     padding-bottom: 200px;
     background-color: #fff9f0;
   }
-  
+
   .loading {
     margin-top: 200px;
     margin-left: 140px;
   }
-  .productsloading{
+
+  .productsloading {
     margin-top: 180px;
     margin-left: 0px;
   }
+
   .searchloading {
     margin-top: 100px;
     margin-left: 0px;
   }
-  
+
   .navbar {
     background-color: rgb(226, 206, 182);
     margin-top: 0px;
     padding-top: 10px;
     height: 100px;
   }
-  
+
   .navbar li {
     display: inline-block;
     padding: 10px;
@@ -1102,22 +1118,22 @@ hr {
     border-radius: 30px;
     border: 1px solid transparent;
   }
-  
+
   .navbar li:hover {
     background-color: rgb(234, 200, 158);
     border: 1px solid rgb(206, 147, 79);
     transform: scale(1.05);
   }
-  
+
   .navbar li a {
     color: rgb(165, 108, 42);
     text-decoration: none;
   }
-  
+
   .navsignup {
     float: right;
   }
-  
+
   .footer {
     position: absolute;
     bottom: 0;
@@ -1132,7 +1148,7 @@ hr {
     text-align: center;
     font-size: 12px; */
   }
-  
+
   .footertext {
     color: rgb(56, 30, 0);
     font-family: 'Raleway', sans-serif;
@@ -1140,60 +1156,72 @@ hr {
     font-size: 12px;
     margin: 10px;
   }
-  
+
   .footertext>div {
     margin-top: -10px;
     margin-bottom: -10px;
   }
-  
+
   .footertext img {
     height: 15px;
     width: 15px;
   }
-  
+
   .copyright {
     display: flex;
     align-items: center;
   }
-  
+
   .contactemail {
     display: flex;
     align-items: center;
   }
-  
+
   .contactphone {
     display: flex;
     align-items: center;
   }
-  
+
   .footericons {
     margin: 10px;
   }
-  
+
   .footericons img {
     height: 30px;
     width: 30px;
     transition: transform 0.5s ease;
   }
-  
+
   .footericons img:hover {
     transform: scale(1.2)
   }
-  
+
+  .signuppage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+  }
+
   .signup {
     margin: 50px;
     text-align: center;
-  
+
+    background-color: white;
+    padding: 10px;
+    border-radius: 50px;
+    box-shadow: 0 0 50px rgb(200, 200, 200);  
+
     opacity: 0;
     /* transform: translateY(20px); */
     transition: opacity 0.5s ease, transform 0.5s ease;
   }
-  
+
   .signup.show {
     opacity: 1;
     /* transform: translateY(0); */
   }
-  
+
   .signup h1 {
     font-size: 20px;
     color: rgb(159, 75, 15);
@@ -1201,21 +1229,21 @@ hr {
     font-family: 'Raleway', sans-serif;
     margin-bottom: 20px;
   }
-  
+
   .signup label {
     font-size: 15px;
     font-family: 'Raleway', sans-serif;
     color: rgb(170, 113, 62);
     font-weight: bold;
   }
-  
+
   .signup a {
     font-size: 12px;
     font-family: 'Raleway', sans-serif;
     color: rgb(170, 113, 62);
     font-weight: bold;
   }
-  
+
   .signup input {
     width: 250px;
     height: 20px;
@@ -1226,45 +1254,46 @@ hr {
     border-radius: 20px;
     transition: all 0.5s ease;
   }
-  
+
   .signup input:hover {
     background-color: rgb(244, 236, 229);
   }
-  
+
   .signup input:focus {
     outline: none;
     border: 2px solid rgb(231, 161, 103);
     transform: scale(1.05);
   }
-  
+
   .signup input::placeholder {
     color: rgb(175, 162, 149);
   }
-  
+
   .signup button {
     font-size: 12px;
     color: rgb(118, 79, 36);
     background-color: rgb(241, 238, 235);
     border: 2px solid rgb(153, 62, 10);
     border-radius: 20px;
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     padding: 10px;
     transition: all 0.5s ease;
   }
-  
+
   .signup button:hover {
     background-color: rgb(225, 210, 194);
     transform: scale(1.1);
   }
-  
-  
+
+
   .addproduct {
     margin: 0px;
     text-align: center;
     width: 100%;
     justify-content: center;
   }
-  
+
   .addproduct h1 {
     font-size: 20px;
     color: rgb(159, 75, 15);
@@ -1272,14 +1301,14 @@ hr {
     font-family: 'Raleway', sans-serif;
     margin-bottom: 20px;
   }
-  
+
   .addproduct label {
     font-size: 13px;
     font-family: 'Raleway', sans-serif;
     color: rgb(170, 113, 62);
     font-weight: bold;
   }
-  
+
   .addproduct input {
     margin-bottom: 8px;
     width: 230px;
@@ -1291,21 +1320,21 @@ hr {
     border-radius: 20px;
     transition: all 0.5s ease;
   }
-  
+
   .addproduct input:hover {
     background-color: rgb(244, 236, 229);
   }
-  
+
   .addproduct input:focus {
     outline: none;
     border: 2px solid rgb(231, 161, 103);
     transform: scale(1.05);
   }
-  
+
   .addproduct input::placeholder {
     color: rgb(175, 162, 149);
   }
-  
+
   .addproduct button {
     font-size: 15px;
     color: rgb(118, 79, 36);
@@ -1316,12 +1345,12 @@ hr {
     padding: 10px;
     transition: all 0.5s ease;
   }
-  
+
   .addproduct button:hover {
     background-color: rgb(225, 210, 194);
     transform: scale(1.1);
   }
-  
+
   .addproduct img {
     width: 80px;
     height: 80px;
@@ -1329,11 +1358,11 @@ hr {
     border-radius: 5px;
     margin-bottom: -50px;
   }
-  
+
   .products {
     text-align: center;
   }
-  
+
   .products h1 {
     font-size: 20px;
     color: rgb(159, 75, 15);
@@ -1341,7 +1370,7 @@ hr {
     font-family: 'Raleway', sans-serif;
     margin-bottom: 20px;
   }
-  
+
   table {
     margin: auto;
     border-collapse: collapse;
@@ -1349,7 +1378,7 @@ hr {
     font-family: 'Raleway', sans-serif;
     font-size: 10px;
   }
-  
+
   th {
     text-align: center;
     padding: 5px;
@@ -1357,25 +1386,25 @@ hr {
     font-weight: bold;
     font-size: 8px;
   }
-  
+
   td {
     text-align: center;
     padding: 5px;
     font-weight: 300;
     font-size: 8px;
   }
-  
+
   tbody tr:hover {
     background-color: #fbf4e8;
   }
-  
+
   table img {
     width: 30px;
     height: 30px;
     border: 1px solid rgb(153, 62, 10);
     border-radius: 5px;
   }
-  
+
   .products h3 {
     margin: auto;
     font-size: 13px;
@@ -1384,7 +1413,7 @@ hr {
     font-family: 'Raleway', sans-serif;
     margin-top: 100px;
   }
-  
+
   .products button {
     font-size: 8px;
     color: rgb(118, 79, 36);
@@ -1397,11 +1426,11 @@ hr {
     margin-right: 2px; */
     margin: 2px;
   }
-  
+
   .products button:hover {
     background-color: rgb(225, 210, 194);
   }
-  
+
   .products input {
     width: 250px;
     height: 20px;
@@ -1412,25 +1441,25 @@ hr {
     border-radius: 20px;
     transition: all 0.5s ease;
   }
-  
+
   .products input:hover {
     background-color: rgb(244, 236, 229);
   }
-  
+
   .products input:focus {
     outline: none;
     border: 2px solid rgb(231, 161, 103);
     transform: scale(1.05);
   }
-  
+
   .products input::placeholder {
     color: rgb(175, 162, 149);
   }
-  
+
   .profile {
     text-align: center;
   }
-  
+
   .profile input {
     width: 250px;
     height: 20px;
@@ -1441,35 +1470,35 @@ hr {
     border-radius: 20px;
     transition: all 0.5s ease;
   }
-  
+
   .profile input:hover {
     background-color: rgb(244, 236, 229);
   }
-  
+
   .profile input:focus {
     outline: none;
     border: 2px solid rgb(231, 161, 103);
     transform: scale(1.05);
   }
-  
+
   .profile input::placeholder {
     color: rgb(175, 162, 149);
   }
-  
+
   .profile h1 {
     font-size: 20px;
     color: rgb(159, 75, 15);
     font-weight: bolder;
     font-family: 'Raleway', sans-serif;
   }
-  
+
   .profile label {
     font-size: 15px;
     font-family: 'Raleway', sans-serif;
     color: rgb(170, 113, 62);
     font-weight: 500;
   }
-  
+
   .profile button {
     font-size: 13px;
     color: rgb(118, 79, 36);
@@ -1481,16 +1510,16 @@ hr {
     margin-left: 2px;
     margin-right: 2px;
   }
-  
+
   .profile button:hover {
     background-color: rgb(225, 210, 194);
   }
-  
+
   .adminlogin {
     margin: 50px;
     text-align: center;
   }
-  
+
   .adminlogin h1 {
     font-size: 20px;
     color: rgb(159, 75, 15);
@@ -1498,14 +1527,14 @@ hr {
     font-family: 'Raleway', sans-serif;
     margin-bottom: 20px;
   }
-  
+
   .adminlogin label {
     font-size: 15px;
     font-family: 'Raleway', sans-serif;
     color: rgb(170, 113, 62);
     font-weight: bold;
   }
-  
+
   .adminlogin input {
     width: 250px;
     height: 20px;
@@ -1516,21 +1545,21 @@ hr {
     border-radius: 20px;
     transition: all 0.5s ease;
   }
-  
+
   .adminlogin input:hover {
     background-color: rgb(244, 236, 229);
   }
-  
+
   .adminlogin input:focus {
     outline: none;
     border: 2px solid rgb(231, 161, 103);
     transform: scale(1.05);
   }
-  
+
   .adminlogin input::placeholder {
     color: rgb(175, 162, 149);
   }
-  
+
   .adminlogin button {
     font-size: 12px;
     color: rgb(118, 79, 36);
@@ -1541,29 +1570,29 @@ hr {
     padding: 10px;
     transition: all 0.5s ease;
   }
-  
+
   .adminlogin button:hover {
     background-color: rgb(225, 210, 194);
     transform: scale(1.1);
   }
-  
+
   .userproducts {
     display: flex;
     justify-content: center;
     align-items: center;
     /* flex-direction: row;
     flex-wrap: wrap; */
-  
+
     opacity: 0;
     transform: translateY(100px);
     transition: opacity 1s ease, transform 1s ease;
   }
-  
+
   .userproducts.show {
     opacity: 1;
     transform: translateY(0);
   }
-  
+
   .product {
     width: 150px;
     height: 300px;
@@ -1576,12 +1605,12 @@ hr {
     background-color: rgb(252, 240, 226);
     transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
   }
-  
+
   .product:hover {
     transform: scale(1.05);
     box-shadow: 0 0 20px rgb(133, 133, 133);
   }
-  
+
   .userproducts h3 {
     margin: auto;
     font-size: 13px;
@@ -1590,7 +1619,7 @@ hr {
     font-family: 'Raleway', sans-serif;
     margin-top: 100px;
   }
-  
+
   .userproducts img {
     width: 150px;
     height: 150px;
@@ -1598,7 +1627,7 @@ hr {
     text-align: center;
     mix-blend-mode: multiply;
   }
-  
+
   .name {
     font-size: 17px;
     color: rgb(153, 62, 10);
@@ -1607,24 +1636,24 @@ hr {
     margin: -5px;
     margin-top: 5px;
   }
-  
+
   .company {
     font-size: 13px;
     color: rgb(153, 62, 10);
     font-family: 'Raleway', sans-serif;
   }
-  
+
   .price {
     font-size: 20px;
     color: rgb(153, 62, 10);
     font-family: 'Raleway', sans-serif;
     font-weight: bolder;
   }
-  
+
   .useramount {
     margin: 5px;
   }
-  
+
   .userrating {
     font-size: 18px;
     color: rgb(118, 79, 36);
@@ -1632,7 +1661,7 @@ hr {
     font-weight: bold;
     margin: 5px;
   }
-  
+
   .userproducts button {
     font-size: 15px;
     color: rgb(118, 79, 36);
@@ -1642,12 +1671,12 @@ hr {
     padding: 10px;
     transition: all 0.5s ease;
   }
-  
+
   .userproducts button:hover {
     background-color: rgb(225, 210, 194);
     transform: scale(1.05);
   }
-  
+
   .details h1 {
     color: rgb(153, 62, 10);
     font-size: 20px;
@@ -1655,7 +1684,7 @@ hr {
     text-align: center;
     margin: 20px;
   }
-  
+
   .details button {
     font-size: 13px;
     color: rgb(118, 79, 36);
@@ -1665,12 +1694,12 @@ hr {
     padding: 10px;
     transition: all 0.5s ease;
   }
-  
+
   .details button:hover {
     background-color: rgb(225, 210, 194);
     transform: scale(1.05);
   }
-  
+
   .detailsflex {
     display: flex;
     justify-content: center;
@@ -1678,64 +1707,64 @@ hr {
     margin-top: -20px;
     flex-direction: column;
   }
-  
+
   .detailsflex>div {
     margin-left: 10px;
     margin-right: 10px;
   }
-  
+
   .imageflex {
     display: flex;
     justify-content: flex-start;
     margin-left: 0px;
   }
-  
+
   .imageflex>div {
     margin-left: 10px;
     margin-right: 10px;
   }
-  
+
   .imageflex img {
     width: 30px;
     height: 30px;
   }
-  
+
   .imageelement {
     text-align: center;
   }
-  
+
   .detailimage img {
     width: 200px;
     height: 200px;
     mix-blend-mode: multiply;
     margin-top: 20px;
   }
-  
+
   .brand {
     font-size: 15px;
     color: rgb(118, 79, 36);
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
   }
-  
+
   .rating {
     font-size: 13px;
     color: rgb(118, 79, 36);
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
   }
-  
+
   .amount {
     margin-left: 1px;
   }
-  
+
   .red {
     color: red;
     font-size: 20px;
     display: inline;
     font-family: 'Raleway', sans-serif;
   }
-  
+
   .discount {
     display: inline;
     color: rgb(118, 79, 36);
@@ -1743,7 +1772,7 @@ hr {
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
   }
-  
+
   .mrp {
     font-size: 18px;
     color: rgb(118, 79, 36);
@@ -1752,14 +1781,14 @@ hr {
     text-decoration: line-through;
     margin: 0px;
   }
-  
+
   .imageabout {
     font-size: 10px;
     color: rgb(118, 79, 36);
     font-family: 'Raleway', sans-serif;
     font-weight: lighter;
   }
-  
+
   .deals {
     color: red;
     font-size: 13px;
@@ -1767,7 +1796,7 @@ hr {
     font-weight: bold;
     font-style: italic;
   }
-  
+
   .tax {
     color: rgb(118, 79, 36);
     font-size: 13px;
@@ -1775,36 +1804,36 @@ hr {
     font-weight: bold;
     font-style: italic;
   }
-  
+
   .heading {
     color: rgb(72, 39, 3);
     font-size: 13px;
     font-family: 'Raleway', sans-serif;
     font-weight: bolder;
   }
-  
+
   .about {
     color: rgb(135, 104, 70);
     font-size: 12px;
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
   }
-  
+
   .star {
     color: rgb(225, 210, 194);
     /* Default star color */
     cursor: pointer;
   }
-  
+
   .star.filled {
     color: rgb(118, 79, 36);
     /* Yellow star color */
   }
-  
+
   .cartpage {
     text-align: center;
   }
-  
+
   .proceed {
     font-size: 13px;
     color: rgb(118, 79, 36);
@@ -1817,12 +1846,12 @@ hr {
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
   }
-  
+
   .proceed:hover {
     background-color: rgb(225, 210, 194);
     transform: scale(1.05);
   }
-  
+
   .cartpage h1 {
     text-align: center;
     color: rgb(72, 39, 3);
@@ -1831,7 +1860,7 @@ hr {
     font-weight: bolder;
     margin: 20px;
   }
-  
+
   .cartitem img {
     width: 40px;
     height: 40px;
@@ -1839,7 +1868,7 @@ hr {
     border-radius: 5px;
     margin: 5px;
   }
-  
+
   .cartitem p {
     color: rgb(118, 79, 36);
     font-size: 10px;
@@ -1847,18 +1876,18 @@ hr {
     font-weight: lighter;
     margin: 5px;
   }
-  
+
   .cartitem {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
   }
-  
+
   .cartitem>div {
     width: 25%;
   }
-  
+
   .quantity {
     font-size: 10px;
     color: rgb(118, 79, 36);
@@ -1869,25 +1898,25 @@ hr {
     padding: 2px;
     margin: -2px;
   }
-  
+
   .quantity:hover {
     background-color: rgb(225, 210, 194);
     transform: scale(1.05);
   }
-  
+
   .quantitydropdown {
     margin-top: 20px;
     margin-right: 20px;
     margin-bottom: 20px;
   }
-  
+
   .quantitylabel {
     color: rgb(118, 79, 36);
     font-size: 13px;
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
   }
-  
+
   .remove {
     font-size: 10px;
     color: rgb(118, 79, 36);
@@ -1900,12 +1929,12 @@ hr {
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
   }
-  
+
   .remove:hover {
     background-color: rgb(225, 210, 194);
     transform: scale(1.05);
   }
-  
+
   .cartpage h3 {
     margin: auto;
     font-size: 13px;
@@ -1914,7 +1943,7 @@ hr {
     font-family: 'Raleway', sans-serif;
     margin-top: 200px;
   }
-  
+
   .totalamount {
     margin: 10px;
     font-size: 15px;
@@ -1922,7 +1951,7 @@ hr {
     font-weight: bolder;
     font-family: 'Raleway', sans-serif;
   }
-  
+
   /* .checkoutpage {
     display: flex;
     justify-content: center;
@@ -1939,14 +1968,14 @@ hr {
     border-radius: 5px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
   } */
-  
+
   .checkoutpage {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 30px;
   }
-  
+
   .checkout {
     text-align: center;
     background-color: white;
@@ -1954,7 +1983,7 @@ hr {
     border-radius: 50px;
     box-shadow: 0 0 30px rgb(200, 200, 200);
   }
-  
+
   .checkoutpage p {
     text-align: center;
     color: rgb(106, 58, 7);
@@ -1963,14 +1992,14 @@ hr {
     font-weight: bolder;
     margin: 20px;
   }
-  
+
   .checkout label {
     color: rgb(118, 79, 36);
     font-size: 15px;
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
   }
-  
+
   .checkout button {
     font-size: 13px;
     color: rgb(118, 79, 36);
@@ -1984,12 +2013,12 @@ hr {
     font-weight: bold;
     margin-top: 10px;
   }
-  
+
   .checkout button:hover {
     background-color: rgb(225, 210, 194);
     transform: scale(1.05);
   }
-  
+
   .checkoutinput {
     width: 250px;
     height: 20px;
@@ -2001,21 +2030,21 @@ hr {
     transition: all 0.5s ease;
     margin: 5px;
   }
-  
+
   .checkoutinput:hover {
     background-color: rgb(244, 236, 229);
   }
-  
+
   .checkoutinput:focus {
     outline: none;
     border: 2px solid rgb(231, 161, 103);
     transform: scale(1.05);
   }
-  
+
   .checkoutinput::placeholder {
     color: rgb(175, 162, 149);
   }
-  
+
   .checkout h3 {
     margin: auto;
     font-size: 15px;
@@ -2023,41 +2052,42 @@ hr {
     font-weight: bolder;
     font-family: 'Raleway', sans-serif;
   }
-  
+
   .checkoutpage hr {
     width: 280px;
   }
-  
+
   .radio {
     text-align: left;
     margin: 10px;
   }
-  
+
   .radioinput {
     width: 13px;
     height: 13px;
   }
-  .radio label{
+
+  .radio label {
     font-size: 13px;
   }
-  
+
   .home1 {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 450px;
-  
+
     opacity: 0;
     transform: translateY(100px);
     transition: opacity 1s ease, transform 1s ease;
   }
-  
+
   .home1.show {
     opacity: 1;
     transform: translateY(0);
   }
-  
+
   .home2 {
     display: flex;
     justify-content: center;
@@ -2069,12 +2099,12 @@ hr {
     transform: translateY(100px);
     transition: opacity 1s ease, transform 1s ease;
   }
-  
+
   .home2.show {
     opacity: 1;
     transform: translateY(0);
   }
-  
+
   .hometext1 {
     color: rgb(118, 79, 36);
     font-size: 8px;
@@ -2082,14 +2112,14 @@ hr {
     font-weight: bold;
     padding: 10px;
   }
-  
+
   .hometext1 span {
     color: rgb(186, 107, 23);
     font-size: 20px;
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
   }
-  
+
   .hometext {
     color: rgb(118, 79, 36);
     font-size: 8px;
@@ -2097,7 +2127,7 @@ hr {
     font-weight: bold;
     padding: 10px;
   }
-  
+
   .homeimagel {
     height: 230px;
     width: 300px;
@@ -2105,7 +2135,7 @@ hr {
     margin: 10px;
     box-shadow: 30px 30px 20px rgb(161, 159, 156);
   }
-  
+
   .homeimager {
     height: 230px;
     width: 300px;
@@ -2113,7 +2143,7 @@ hr {
     margin: 10px;
     box-shadow: -30px 30px 20px rgb(161, 159, 156);
   }
-  
+
   hr {
     border: none;
     height: 3px;
@@ -2121,12 +2151,12 @@ hr {
     background-size: 200% 1px;
     animation: gradientShift 4s infinite;
   }
-  
+
   @keyframes gradientShift {
     0% {
       background-position: 100% 0;
     }
-  
+
     100% {
       background-position: -100% 0;
     }
