@@ -25,7 +25,7 @@ const UserProducts = () => {
     const getproducts = async () => {
         // let result = await fetch('http://127.0.0.1:3000/userproducts')
         // let result = await fetch(`mongodb+srv://jayakantharun03:${password}@cluster0.txiaeb6.mongodb.net/`)
-        let result = await fetch('http://0.0.0.0:3000/userproducts')
+        let result = await fetch('https://0.0.0.0:3000/userproducts')
         result = await result.json()
         setproducts(result)
         setIsLoading(false)
