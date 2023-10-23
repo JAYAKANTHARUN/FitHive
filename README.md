@@ -1,7 +1,7 @@
 
 # FitHive
 
-This project is a full-stack ecommerce website built using the MERN (MongoDB, Express.js, React.js, Node.js) stack, with the addition of JSON Web Tokens (JWT) for authentication. It provides a platform for selling sports-related products and accessories online, ensuring secure user access and personalized shopping experiences.
+This project is a comprehensive full-stack e-commerce website crafted using the MERN (MongoDB, Express.js, React.js, Node.js) stack, fortified with JSON Web Tokens (JWT) for secure authentication. It offers a robust platform tailored for online sales of sports-related products and accessories. With a responsive design, users can enjoy a secure shopping environment with personalized features and experiences.
 
 ## Key Features:
 
