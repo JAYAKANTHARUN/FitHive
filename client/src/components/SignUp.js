@@ -26,7 +26,7 @@ const SignUp = () => {
     const collectdata = async () => {
         setIsLoading(true)
         console.log(name, email, password)
-        let result = await fetch('https://fithive.onrender.com/register', {
+        let result = await fetch('https://fithive-e-commerce.onrender.com/register', {
             method: 'post',
             body: JSON.stringify({ name, email, password }),
             headers: {

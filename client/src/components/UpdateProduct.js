@@ -24,7 +24,7 @@ const UpdateProduct = () => {
     }, [])
 
     const getproductdetails = async () => {
-        let result = await fetch(`https://fithive.onrender.com/admin/${params.id}`, {
+        let result = await fetch(`https://fithive-e-commerce.onrender.com/admin/${params.id}`, {
             headers: {
                 'authorization': JSON.parse(localStorage.getItem('token'))
             }
@@ -45,7 +45,7 @@ const UpdateProduct = () => {
     const updateproduct = async () => {
         setIsLoading(true)
         console.log(name, price, category, company, image, star, rating, discount, about)
-        let result = await fetch(`https://fithive.onrender.com/admin/${params.id}`, {
+        let result = await fetch(`https://fithive-e-commerce.onrender.com/admin/${params.id}`, {
             method: 'post',
             body: JSON.stringify({ id: params.id, name, price, category, company, image, star, rating, discount, about }),
             headers: {

@@ -21,7 +21,7 @@ const Profile = () => {
     }
     const changepassword=async(userid)=>{
         setIsLoading(true)
-        let result=await fetch('https://fithive.onrender.com/profile',{
+        let result=await fetch('https://fithive-e-commerce.onrender.com/profile',{
             method:'post',
             body:JSON.stringify({userid,currentpassword,newpassword}),
             headers:{

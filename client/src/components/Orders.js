@@ -19,7 +19,7 @@ const Orders = () => {
 
     const getorders = async () => {
         if (auth) {
-            let result = await fetch(`https://fithive.onrender.com/orders/${auth._id}`, {
+            let result = await fetch(`https://fithive-e-commerce.onrender.com/orders/${auth._id}`, {
                 headers: {
                     'authorization': JSON.parse(localStorage.getItem('token'))
                 }

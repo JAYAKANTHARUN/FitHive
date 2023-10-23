@@ -27,7 +27,7 @@ const Login = () => {
     const handlelogin = async () => {
         setIsLoading(true)
         console.log(name, email, password)
-        let result = await fetch('https://fithive.onrender.com/login', {
+        let result = await fetch('https://fithive-e-commerce.onrender.com/login', {
             method: 'post',
             body: JSON.stringify({ name, email, password }),
             headers: {

@@ -21,7 +21,7 @@ const Cart = () => {
 
     const getcart = async () => {
         if (auth) {
-            let result = await fetch(`https://fithive.onrender.com/cart/${auth._id}`, {
+            let result = await fetch(`https://fithive-e-commerce.onrender.com/cart/${auth._id}`, {
                 headers: {
                     'authorization': JSON.parse(localStorage.getItem('token'))
                 }
@@ -48,14 +48,14 @@ const Cart = () => {
 
     const decquantity = async (cartid) => {
         setIsLoading(true)
-        let result = await fetch(`https://fithive.onrender.com/changequantity/${cartid}`, {
+        let result = await fetch(`https://fithive-e-commerce.onrender.com/changequantity/${cartid}`, {
             headers: {
                 'authorization': JSON.parse(localStorage.getItem('token'))
             }
         })
         result = await result.json()
         if (result.quantity === '1') {
-            let result = await fetch(`https://fithive.onrender.com/removequantity/${cartid}`, {
+            let result = await fetch(`https://fithive-e-commerce.onrender.com/removequantity/${cartid}`, {
                 method: 'delete',
                 headers: {
                     'authorization': JSON.parse(localStorage.getItem('token'))
@@ -65,7 +65,7 @@ const Cart = () => {
             getcart()
         }
         else {
-            result = await fetch(`https://fithive.onrender.com/decquantity/${cartid}`, {
+            result = await fetch(`https://fithive-e-commerce.onrender.com/decquantity/${cartid}`, {
                 method: 'post',
                 body: JSON.stringify({ quantity: result.quantity }),
                 headers: {
@@ -79,13 +79,13 @@ const Cart = () => {
     }
     const incquantity = async (cartid) => {
         setIsLoading(true)
-        let result = await fetch(`https://fithive.onrender.com/changequantity/${cartid}`, {
+        let result = await fetch(`https://fithive-e-commerce.onrender.com/changequantity/${cartid}`, {
             headers: {
                 'authorization': JSON.parse(localStorage.getItem('token'))
             }
         })
         result = await result.json()
-        result = await fetch(`https://fithive.onrender.com/incquantity/${cartid}`, {
+        result = await fetch(`https://fithive-e-commerce.onrender.com/incquantity/${cartid}`, {
             method: 'post',
             body: JSON.stringify({ quantity: result.quantity }),
             headers: {
@@ -98,7 +98,7 @@ const Cart = () => {
     }
     const remove = async (cartid) => {
         setIsLoading(true)
-        let result = await fetch(`https://fithive.onrender.com/removequantity/${cartid}`, {
+        let result = await fetch(`https://fithive-e-commerce.onrender.com/removequantity/${cartid}`, {
             method: 'delete',
             headers: {
                 'authorization': JSON.parse(localStorage.getItem('token'))

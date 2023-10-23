@@ -24,7 +24,7 @@ const UserProducts = () => {
 
     const getproducts = async () => {
         //let result = await fetch('http://127.0.0.1:3000/userproducts')
-        let result = await fetch('https://fithive.onrender.com/userproducts')
+        let result = await fetch('https://fithive-e-commerce.onrender.com/userproducts')
         result = await result.json()
         setproducts(result)
         setIsLoading(false)
